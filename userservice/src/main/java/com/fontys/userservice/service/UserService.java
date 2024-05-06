@@ -5,6 +5,6 @@ import com.fontys.userservice.model.User;
 import java.util.List;
 
 public interface UserService {
-    User saveUserData(User user);
+    User createUser(User user);
     List<User> getListOfUsers();
 }
