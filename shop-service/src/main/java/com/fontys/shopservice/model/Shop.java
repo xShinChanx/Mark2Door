@@ -20,4 +20,7 @@ public class Shop {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "ownerID")
+    private Long ownerId;
 }
