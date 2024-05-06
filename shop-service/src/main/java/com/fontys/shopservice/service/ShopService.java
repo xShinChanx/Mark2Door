@@ -7,5 +7,4 @@ import java.util.List;
 public interface ShopService {
     Shop saveShopData(Shop shop);
     List<Shop> getListOfShops();
-
 }
