@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class UserserviceApplication {
+public class UserServiceApplication {
 
 	@Primary
 	@Bean
@@ -16,7 +16,7 @@ public class UserserviceApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserserviceApplication.class, args);
+		SpringApplication.run(UserServiceApplication.class, args);
 	}
 
 }
