@@ -13,7 +13,7 @@ public class User {
     private Long Id;
 
     @Column(name = "name")
-    private String firstName;
+    private String name;
 
     @Column(name = "email")
     private String email;
@@ -22,5 +22,5 @@ public class User {
     private String password;
 
     @Column(name = "roles")
-    private String roles;
+    private String role;
 }
