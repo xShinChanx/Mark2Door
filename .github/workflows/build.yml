@@ -13,11 +13,19 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
+      
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Build and test with Maven
+      
+      - name: Build User Microservice
+        working-directory: ./user-microservice
         run: mvn --batch-mode package
+      
+      - name: Build Shop Microservice
+        working-directory: ./shop-service
+        run: mvn --batch-mode package
+      
