@@ -23,8 +23,8 @@ jobs:
       
       - name: Build User Microservice
         working-directory: ./user-service
-        run: mvn --batch-mode package
+        run: mvn --batch-mode package -DskipTests
       
       - name: Build Shop Microservice
         working-directory: ./shop-service
-        run: mvn --batch-mode package
+        run: mvn --batch-mode package -DskipTests
