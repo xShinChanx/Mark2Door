@@ -22,9 +22,9 @@ jobs:
           cache: maven
       
       - name: Build User Microservice
-        working-directory: /user-service
+        working-directory: ./user-service
         run: mvn --batch-mode package
       
       - name: Build Shop Microservice
-        working-directory: /shop-service
+        working-directory: ./shop-service
         run: mvn --batch-mode package
