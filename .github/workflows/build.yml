@@ -1,7 +1,7 @@
 name: Java CI with Maven
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -28,4 +28,3 @@ jobs:
       - name: Build Shop Microservice
         working-directory: ./shop-service
         run: mvn --batch-mode package
-      
