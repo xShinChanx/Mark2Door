@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +27,17 @@ jobs:
       - name: Build Shop Microservice
         working-directory: ./shop-service
         run: mvn --batch-mode package -DskipTests
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+      
+      - name: Fake Deployment for User Microservice
+        run: echo "Deploying User Microservice..." && sleep 5 && echo "User Microservice deployed!"
+      
+      - name: Fake Deployment for Shop Microservice
+        run: echo "Deploying Shop Microservice..." && sleep 5 && echo "Shop Microservice deployed!"
