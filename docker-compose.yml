@@ -1,9 +1,10 @@
 version: "3.8"
-services:
+services: 
 
 #user service
   dbuser:
     image: mysql:8.0
+    container_name: dbuser
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - "3307:3306"
@@ -50,6 +51,31 @@ services:
     networks:
       - app-networks
 
+#cart service
+  dbcart:
+    image: mysql:8.0
+    container_name: dbcart
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: qwertyui
+      MYSQL_DATABASE: cart_service
+    networks:
+      - app-networks
+
+  cart-service-app:
+    build:
+      context: ./cart-service
+      dockerfile: ./Dockerfile
+    container_name: cart-service
+    ports:
+      - "8886:8886"
+    depends_on:
+      - dbcart
+    networks:
+      - app-networks
+  
 networks:
   app-networks:
     driver: bridge
