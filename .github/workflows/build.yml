@@ -28,6 +28,10 @@ jobs:
         working-directory: ./shop-service
         run: mvn --batch-mode package -DskipTests
 
+      - name: Build Cart Microservice
+        working-directory: ./cart-service
+        run: mvn --batch-mode package -DskipTests
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -41,3 +45,6 @@ jobs:
       
       - name: Fake Deployment for Shop Microservice
         run: echo "Deploying Shop Microservice..." && sleep 5 && echo "Shop Microservice deployed!"
+        
+      - name: Fake Deployment for Cart Microservice
+        run: echo "Deploying Cart Microservice..." && sleep 5 && echo "Shop Cart deployed!"
