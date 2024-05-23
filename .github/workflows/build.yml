@@ -31,28 +31,3 @@ jobs:
       - name: Build Cart Microservice
         working-directory: ./cart-service
         run: mvn --batch-mode package -DskipTests
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
-
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'latest'
-
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Get AKS credentials
-        run: az aks get-credentials --resource-group Market2DoorResources --name Market2DoorCluster --admin
-
-      - name: Deploy User Microservice
-        run: |
-          kubectl apply -f ./user-service-deployment.yml
-          kubectl apply -f ./user-service.yml
