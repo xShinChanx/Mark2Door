@@ -23,7 +23,7 @@ jobs:
       
       - name: Build and Pushing User Service
         working-directory: ./user-service
-        run: mvn --batch-mode package -DskipTests dockerfile:push --file pom.xml
+        run: mvn --batch-mode -f pom.xml package -DskipTests dockerfile:push
         env:
           MAVEN_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
