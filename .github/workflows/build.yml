@@ -50,7 +50,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Get AKS credentials
-        run: az aks get-credentials --resource-group Market2DoorResources --name Market2DoorCluster
+        run: az aks get-credentials --resource-group Market2DoorResources --name Market2DoorCluster --admin
 
       - name: Deploy User Microservice
         run: |
