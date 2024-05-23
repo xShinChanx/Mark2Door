@@ -48,7 +48,6 @@ jobs:
 
       - name: Build and push Docker image for User Microservice
         run: |
-          docker build -t adelshaik/mark2door-user-service-app:latest ./user-service
           docker push adelshaik/mark2door-user-service-app:latest
 
   deploy:
