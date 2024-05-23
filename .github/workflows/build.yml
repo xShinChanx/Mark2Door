@@ -17,28 +17,17 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'adopt'
+          distribution: 'temurin'
           cache: maven
-          server-id: docker.io
       
-      - name: Build and Pushing User Service
+      - name: Build User Microservice
         working-directory: ./user-service
-        run: mvn --batch-mode -f pom.xml package -DskipTests dockerfile:push
-        env:
-          MAVEN_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-        
+        run: mvn --batch-mode package -DskipTests
       
       - name: Build Shop Microservice
         working-directory: ./shop-service
-        run: mvn --batch-mode package -DskipTests dockerfile:push --file pom.xml
-        env:
-          MAVEN_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        run: mvn --batch-mode package -DskipTests
 
       - name: Build Cart Microservice
         working-directory: ./cart-service
-        run: mvn --batch-mode package -DskipTests dockerfile:push --file pom.xml
-        env:
-          MAVEN_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        run: mvn --batch-mode package -DskipTests
