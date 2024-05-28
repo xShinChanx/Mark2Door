@@ -57,7 +57,7 @@ jobs:
         run: gcloud auth configure-docker
 
       - name: Build Docker image
-        run: docker build -t gcr.io/market2door/${{ env.SERVICE }}:${{ github.sha }} ./user-service/Dockerfile
+        run: docker build -t gcr.io/market2door/${{ env.SERVICE }}:${{ github.sha }} -f ./user-service/Dockerfile ./user-service
       
       - name: Push Docker image to Container Registry
         run: docker push gcr.io/market2door/${{ env.SERVICE }}:${{ github.sha }}
