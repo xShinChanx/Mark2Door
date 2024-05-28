@@ -1,5 +1,6 @@
 FROM openjdk:17
 WORKDIR /app
-COPY ./target/user-service-jar .
+COPY ./target/userservice-0.0.1-SNAPSHOT.jar .
 EXPOSE 8888
-CMD ["java", "-jar", "user-service-jar.jar"]
+CMD ["java", "-jar", "userservice-0.0.1-SNAPSHOT.jar"]
+
