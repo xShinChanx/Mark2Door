@@ -1,9 +1,0 @@
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/service/ServiceImp/UserServiceImp.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/controller/UserController.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/repository/UserRepository.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/UserServiceApplication.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/model/User.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/service/UserService.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/model/Request/LogInRequest.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/model/Request/CreateShopRequest.java
-/home/shinchan/Documents/Mark2Door/user-service/src/main/java/com/fontys/userservice/model/Request/CreateAccountRequest.java
