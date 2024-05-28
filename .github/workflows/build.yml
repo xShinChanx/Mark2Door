@@ -9,7 +9,7 @@ on:
 env:
   PROJECT_ID: market2door
   SERVICE: webapp
-  REGION: europe-west4 # Add a service name here
+  REGION: europe-west1 # Add a service name here
 
 jobs:
   build:
