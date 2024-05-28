@@ -27,12 +27,18 @@ jobs:
         working-directory: ./user-service
         run: mvn --batch-mode package -DskipTests
 
+      - name: Create Staging Directory and Copy JAR Files
+        run: |
+          mkdir staging
+          cp target/*.jar staging
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: user-service-jar
-          path: ./user-service/target/*.jar
+          name: Package
+          path: staging
 
+            
 #Deploy Google run
   deploy:
     runs-on: ubuntu-latest
