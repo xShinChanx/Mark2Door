@@ -26,11 +26,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build User Microservice
-        run: |
-          mkdir -p target
-          mv user-service/staging/userservice-0.0.1-SNAPSHOT.jar target/
-        working-directory: ./user-service
+      - name: Create target directory
+        run: mkdir -p target
+
+      - name: Move JAR file to target directory
+        run: mv user-service/staging/*.jar target/
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
