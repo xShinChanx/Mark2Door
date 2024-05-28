@@ -35,8 +35,8 @@ jobs:
         with:
           name: userservice-jar
           path: |
-            user-service/target/*.jar
-            !user-service/target/*.original.jar
+            target/*.jar
+            target/*.original.jar
 
 #Deploy Google run
   deploy:
