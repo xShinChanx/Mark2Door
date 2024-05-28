@@ -27,17 +27,12 @@ jobs:
         working-directory: ./user-service
         run: mvn --batch-mode package -DskipTests
 
-      - name: Create Staging Directory and Copy JAR Files
-        run: |
-          mkdir staging
-          cp target/*.jar staging
-
-      - name: Upload Artifact
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: Package
-          path: staging
-
+          name: java-app
+          path: "${{ github.workspace }}/target/*.jar"
+      
             
 #Deploy Google run
   deploy:
