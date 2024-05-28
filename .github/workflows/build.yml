@@ -50,5 +50,21 @@ jobs:
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: ${{ env.PROJECT_ID }}
-          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          service_account_key: ${{ secrets.GC_SA_KEY }}
           export_default_credentials: true
+
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker
+
+      - name: Build Docker image
+        run: docker build -t gcr.io/market2door/${{ env.SERVICE }}:${{ github.sha }} .
+      
+      - name: Push Docker image to Container Registry
+        run: docker push gcr.io/market2door/${{ env.SERVICE }}:${{ github.sha }}
+
+      - name: Show Output
+        run: echo ${{ steps.gohibeesh.outputs.url }}
+
+      - name: Deploy to Cloud Run
+        id: gohibeesh
+        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door/${{ env.SERVICE }}:${{  github.sha }} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
