@@ -24,4 +24,5 @@ jobs:
           cache: 'maven'
           
       - name: Build User Microservice
-        run: mvn clean package -DskipTests
+        working-directory: ./user-service
+        run: mvn --batch-mode package -DskipTests
