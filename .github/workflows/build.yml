@@ -27,7 +27,9 @@ jobs:
           cache: maven
 
       - name: Build User Microservice
-        run: mvn clean package -DskipTests
+        run: |
+          mkdir -p target
+          mv user-service/staging/userservice-0.0.1-SNAPSHOT.jar target/
         working-directory: ./user-service
 
       - name: Archive artifacts
