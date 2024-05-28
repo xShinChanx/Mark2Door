@@ -29,8 +29,12 @@ jobs:
       - name: Create target directory
         run: mkdir -p target
 
-      - name: Move JAR file to target directory
+      - name: List contents of staging directory
+        run: ls -la user-service/staging
+
+      - name: Move JAR files to target directory
         run: mv user-service/staging/*.jar target/
+        if: success() # Only move if previous steps were successful
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
