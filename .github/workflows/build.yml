@@ -25,28 +25,3 @@ jobs:
           
       - name: Build User Microservice
         run: mvn clean package -DskipTests
-        working-directory: ./user-service
-      
-      - name: Create Staging Directory and Move JAR files
-        run: |
-          mkdir staging
-          mv user-service/target/userservice-0.0.1-SNAPSHOT.jar user-service/target/userservice-${{ github.run_number }}.jar
-          cp user-service/target/*.jar staging
-        working-directory: ./user-service
-      
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Package
-          path: staging
-          retention-days: 1
-      
-      - name: Automatic Releases
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: "${{ secrets.YOUR-GITHUB-TOKEN }}"
-          automatic_release_tag: "${{ github.run_number }}"
-          title: "Automated Build ${{ github.run_number }}"
-          prerelease: true
-          files: staging/*.jar
-
