@@ -14,36 +14,39 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: maven
-
+          cache: 'maven'
+          
       - name: Build User Microservice
         run: mvn clean package -DskipTests
         working-directory: ./user-service
-
-      - name: Create target directory
-        run: mkdir -p target
-
-      - name: List contents of staging directory
-        run: ls -la user-service/staging
-
-      - name: Move JAR files to target directory
-        run: mv user-service/staging/*.jar target/
-        if: success() # Only move if previous steps were successful
-
-      - name: Archive artifacts
+      
+      - name: Create Staging Directory and Move JAR files
+        run: |
+          mkdir staging
+          mv user-service/target/userservice-0.0.1-SNAPSHOT.jar user-service/target/userservice-${{ github.run_number }}.jar
+          cp user-service/target/*.jar staging
+        working-directory: ./user-service
+      
+      - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: userservice-jar
-          path: |
-            target/*.jar
-            target/*.original.jar
+          name: Package
+          path: staging
+          retention-days: 1
+      
+      - name: Automatic Releases
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.YOUR-GITHUB-TOKEN }}"
+          automatic_release_tag: "${{ github.run_number }}"
+          title: "Automated Build ${{ github.run_number }}"
+          prerelease: true
+          files: staging/*.jar
+
