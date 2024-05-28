@@ -32,12 +32,4 @@ jobs:
           name: user-service-jar
           path: ./user-service/target/*.jar
           
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: user-service-jar
-          path: ./downloaded-artifact
-
-      - name: List Files
-        run: ls ./downloaded-artifact
 
