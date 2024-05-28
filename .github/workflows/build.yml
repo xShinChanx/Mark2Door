@@ -10,6 +10,7 @@ env:
   PROJECT_ID: market2door
   SERVICE: webapp
   REGION: europe-west4 # Add a service name here
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       # Sets up the gcloud cli with the credentials we previously created, and will be storing within Github as secrets.
       - name: Setup Cloud cli
         uses: google-github-actions/setup-gcloud@v0.2.0
