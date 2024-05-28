@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -27,26 +27,13 @@ jobs:
           cache: maven
 
       - name: Build User Microservice
-        working-directory: ./user-service
         run: mvn clean package -DskipTests
-
-      - name: List contents of target directory
         working-directory: ./user-service
-        run: ls -la ./target
 
-      - name: Create staging directory and move JAR files
-        working-directory: ./user-service
-        run: |
-          mkdir -p staging
-          mv target/userservice-0.0.1-SNAPSHOT.jar target/userservice-${{ github.run_number }}.jar
-          cp target/*.jar staging
-
-      - name: List contents of staging directory
-        working-directory: ./user-service
-        run: ls -la ./staging
-
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v3
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
         with:
           name: userservice-jar
-          path: ./user-service/staging/*.jar
+          path: |
+            user-service/target/*.jar
+            !user-service/target/*.original.jar
