@@ -18,17 +18,21 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
-      
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      
+
       - name: Build User Microservice
         working-directory: ./user-service
-        run: mvn --batch-mode package -DskipTests
-      
-      - name: List contents of target directory
-        run: ls -la ./user-service/target
+        run: mvn clean package -DskipTests
+
+      - name: Create staging directory and move JAR files
+        working-directory: ./user-service
+        run: |
+          mkdir staging
+          mv target/userservice-0.0.1-SNAPSHOT.jar target/userservice-${{ github.run_number }}.jar
+          cp target/*.jar staging
