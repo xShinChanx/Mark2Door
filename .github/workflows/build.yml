@@ -11,6 +11,7 @@ env:
   SERVICE: webapp
   REGION: europe-west4 # Add a service name here
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,3 +27,9 @@ jobs:
       - name: Build User Microservice
         working-directory: ./user-service
         run: mvn --batch-mode package -DskipTests
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: user-service-jar
+          path: ./user-service/target/*.jar
