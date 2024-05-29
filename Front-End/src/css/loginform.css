@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-form {
+  background-color: white;
+  max-width: 30em;
+  height: auto;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 0 0.188em 1.550em rgb(156, 156, 156);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin-bottom: 1em;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; /* Dark gray color */
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+button {
+  padding: 0.5em 2em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Custom styles for radio buttons */
+.role-selection {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.role-selection label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 0.875em; /* Adjust the font size here */
+}
+
+.role-selection input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+/* Adjust radio buttons to match overall form style */
+input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.role-selection label span {
+  font-weight: bold;
+  font-size: 0.875em; /* Adjust the font size here */
+}
