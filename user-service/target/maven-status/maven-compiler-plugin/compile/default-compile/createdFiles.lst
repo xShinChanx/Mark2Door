@@ -5,6 +5,7 @@ com/fontys/userservice/service/UserService.class
 com/fontys/userservice/config/Configration.class
 com/fontys/userservice/model/Request/CreateAccountRequest.class
 com/fontys/userservice/UserServiceApplication.class
+com/fontys/userservice/config/MessagingConfig.class
 com/fontys/userservice/model/Request/LogInRequest$LogInRequestBuilder.class
 com/fontys/userservice/model/Request/CreateAccountRequest$CreateAccountRequestBuilder.class
 com/fontys/userservice/controller/UserController.class

@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -24,12 +26,21 @@ public class UserController {
     UserService userService;
 
     @Autowired
+    private RabbitTemplate template;
+
+    /*@Autowired
     private RestTemplate restTemplate;
 
     @PostMapping("/createShop")
     public ResponseEntity<?> createShop(@RequestBody CreateShopRequest createShopRequest) {
         ResponseEntity<?> responseEntity = restTemplate.postForObject("http://localhost:8887/shop", createShopRequest, ResponseEntity.class);
         return ResponseEntity.ok().build();
+    }*/
+
+    @PostMapping("/createShop")
+    public ResponseEntity<?> createShop(@RequestBody CreateShopRequest createShopRequest) {
+        template.convertAndSend("shop-exchange", "shop-routingKey", createShopRequest);
+        return ResponseEntity.ok("yeet");
     }
 
     @PostMapping("/createAccount")

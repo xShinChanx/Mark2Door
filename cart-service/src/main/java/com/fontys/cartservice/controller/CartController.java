@@ -2,7 +2,6 @@ package com.fontys.cartservice.controller;
 
 import com.fontys.cartservice.model.Cart;
 import com.fontys.cartservice.model.Request.AddItemToCartRequest;
-import com.fontys.cartservice.model.Request.CreateCartRequest;
 import com.fontys.cartservice.model.Request.RemoveItemFromCartRequest;
 import com.fontys.cartservice.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,6 @@ public class CartController {
     @Autowired
     CartService cartService;
 
-    @PostMapping("/createCart")
-    public ResponseEntity<?> createCart(@RequestBody CreateCartRequest createCartRequest){
-        return ResponseEntity.ok(cartService.createCart(createCartRequest));
-    }
-
     @GetMapping(value = "/carts")
     public ResponseEntity<List<Cart>> getListOfCarts(){
         return new ResponseEntity<>(cartService.getListOfCarts(), HttpStatusCode.valueOf(200));
@@ -35,5 +29,10 @@ public class CartController {
     @DeleteMapping("/deleteItemFromCart")
     public ResponseEntity<?> removeItemFromCart(@RequestBody RemoveItemFromCartRequest removeItemFromCartRequest){
         return ResponseEntity.ok(cartService.removeItemFromCart(removeItemFromCartRequest));
+    }
+
+    @GetMapping("/getItems")
+    public ResponseEntity<List<Long>> getListOfItems(@RequestParam Long userID) {
+        return ResponseEntity.ok(cartService.listOfItemsInCart(userID));
     }
 }

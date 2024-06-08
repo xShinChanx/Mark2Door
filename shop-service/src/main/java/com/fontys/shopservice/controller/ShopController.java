@@ -3,7 +3,7 @@ package com.fontys.shopservice.controller;
 import com.fontys.shopservice.model.Shop;
 import com.fontys.shopservice.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,8 @@ public class ShopController {
     }
 
     @GetMapping(value = "/shops")
-    public ResponseEntity<List<Shop>> getUserData(){
-        return new ResponseEntity<>(shopService.getListOfShops(), HttpStatusCode.valueOf(200));
+    public ResponseEntity<List<Shop>> getUserData() {
+        List<Shop> shops = shopService.getListOfShops();
+        return new ResponseEntity<>(shops, HttpStatus.OK); // Use HttpStatus.OK
     }
 }

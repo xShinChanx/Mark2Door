@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ItemServiceImp implements ItemService {
@@ -22,5 +23,10 @@ public class ItemServiceImp implements ItemService {
     @Override
     public List<Item> getListOfItems() {
         return itemRepository.findAll();
+    }
+
+    @Override
+    public Optional<Item> findItem(Long itemID) {
+        return itemRepository.findById(itemID);
     }
 }

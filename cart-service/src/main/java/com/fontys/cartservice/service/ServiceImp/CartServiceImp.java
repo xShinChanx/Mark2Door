@@ -2,7 +2,6 @@ package com.fontys.cartservice.service.ServiceImp;
 
 import com.fontys.cartservice.model.Cart;
 import com.fontys.cartservice.model.Request.AddItemToCartRequest;
-import com.fontys.cartservice.model.Request.CreateCartRequest;
 import com.fontys.cartservice.model.Request.RemoveItemFromCartRequest;
 import com.fontys.cartservice.repository.CartRepository;
 import com.fontys.cartservice.service.CartService;
@@ -16,13 +15,6 @@ public class CartServiceImp implements CartService {
 
     @Autowired
     CartRepository cartRepository;
-
-    @Override
-    public Cart createCart(CreateCartRequest createCartRequest) {
-        Cart newCart = new Cart();
-        newCart.setUserID(createCartRequest.getUserID());
-        return cartRepository.save(newCart);
-    }
 
     @Override
     public List<Cart> getListOfCarts() {
@@ -43,5 +35,10 @@ public class CartServiceImp implements CartService {
         Cart ItemAndCart = cartRepository.findByUserIDAndItemID(removeItemFromCartRequest.getUserID(), removeItemFromCartRequest.getItemID());
         cartRepository.delete(ItemAndCart);
         return "Deleted Item from the Cart";
+    }
+
+    @Override
+    public List <Long> listOfItemsInCart(Long userID) {
+        return cartRepository.findItemIDsByUserID(userID);
     }
 }
