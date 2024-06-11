@@ -13,7 +13,7 @@ const ListOfShops = () => {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const response = await fetch('http://localhost:8887/shops');
+        const response = await fetch('http://localhost:8085/shop/shops');
         const data = await response.json();
         setShops(data);
       } catch (error) {

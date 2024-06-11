@@ -1,0 +1,21 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id: SHOP-SERVICE
+          uri: http://localhost:8887
+          predicates:
+            - Path=/shop/**
+        - id: USER-SERVICE
+          uri: http://localhost:8888
+          predicates:
+            - Path=/user/**
+        - id: CART-SERVICE
+          uri: http://localhost:8886
+          predicates:
+            - Path=/cart/**

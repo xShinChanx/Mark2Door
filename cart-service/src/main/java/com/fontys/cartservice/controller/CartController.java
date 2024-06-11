@@ -12,9 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/cart")
 public class CartController {
     @Autowired
     CartService cartService;
+
+    @GetMapping("/test")
+    public ResponseEntity<String> getAnonymous() {
+        return ResponseEntity.ok("Welcome to cart-service");
+    }
 
     @GetMapping(value = "/carts")
     public ResponseEntity<List<Cart>> getListOfCarts(){

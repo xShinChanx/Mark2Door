@@ -1,4 +1,4 @@
-package com.fontys.userservice.config;
+package com.fontys.cartservice.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -9,21 +9,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MessagingConfig {
+public class RabbitConfig {
 
     @Bean
     public Queue queue(){
-        return new Queue("user-queue");
+        return new Queue("cart-queue");
     }
 
     @Bean
     public TopicExchange exchange(){
-        return new TopicExchange("user-exchange");
+        return new TopicExchange("cart-exchange");
     }
 
     @Bean
     public Binding binding(Queue queue, TopicExchange exchange){
-        return BindingBuilder.bind(queue).to(exchange).with("user-routingKey");
+        return BindingBuilder.bind(queue).to(exchange).with("cart-routingKey");
     }
 
     @Bean
@@ -37,5 +37,4 @@ public class MessagingConfig {
         rabbitTemplate.setMessageConverter(converter());
         return rabbitTemplate;
     }
-
 }

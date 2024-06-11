@@ -10,7 +10,7 @@ const LoginForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-        const response = await axios.post("http://localhost:8888/login", { email, password });
+        const response = await axios.post("http://localhost:8085/user/login", { email, password });
         console.log(password)
         console.log(response.data);
     } catch (err) {

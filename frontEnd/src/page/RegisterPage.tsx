@@ -12,7 +12,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8888/createAccount", { name, email, password, role });
+      const response = await axios.post("http://localhost:8085/user/createAccount", { name, email, password, role });
       console.log(response.data);
     } catch (err) {
       console.error(err);

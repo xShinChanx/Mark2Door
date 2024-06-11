@@ -15,7 +15,7 @@ const ListOfItems = () => {
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const response = await fetch('http://localhost:8887/items');
+                const response = await fetch('http://localhost:8085/shop/items');
                 const data = await response.json();
                 setItems(data)
             }   catch (error) {

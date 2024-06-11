@@ -5,13 +5,11 @@ on:
     branches:
       - main
 
-
 env:
   PROJECT_ID: market2door-424719
   SERVICE: user-service
   REGION: europe-west4
   PORT: 8888
-
 
 jobs:
   build:

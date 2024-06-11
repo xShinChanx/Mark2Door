@@ -10,10 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,6 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
@@ -36,6 +34,11 @@ public class UserController {
         ResponseEntity<?> responseEntity = restTemplate.postForObject("http://localhost:8887/shop", createShopRequest, ResponseEntity.class);
         return ResponseEntity.ok().build();
     }*/
+
+    @GetMapping("/test")
+    public ResponseEntity<String> getAnonymous() {
+        return ResponseEntity.ok("Welcome to user-service");
+    }
 
     @PostMapping("/createShop")
     public ResponseEntity<?> createShop(@RequestBody CreateShopRequest createShopRequest) {
