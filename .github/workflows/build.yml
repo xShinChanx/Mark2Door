@@ -1,4 +1,4 @@
-name: Java CI CD PLEASE WOR
+name: Java CI CD
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: market2door-424719
+  PROJECT_ID: market2door-426707
   SERVICE: user-service
   REGION: europe-west4
   PORT: 8888
@@ -52,14 +52,14 @@ jobs:
         run: gcloud auth configure-docker
 
       - name: Build Docker image
-        run: docker build -t gcr.io/market2door-424719/${{ env.SERVICE }}:${{ github.sha }} -f ./user-service/Dockerfile ./user-service
+        run: docker build -t gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }} -f ./user-service/Dockerfile ./user-service
       
       - name: Push Docker image to Container Registry
-        run: docker push gcr.io/market2door-424719/${{ env.SERVICE }}:${{ github.sha }}
+        run: docker push gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }}
 
       - name: Show Output
         run: echo ${{ steps.gohibeesh.outputs.url }}
 
       - name: Deploy to Cloud Run
         id: gohibeesh
-        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-424719/${{ env.SERVICE }}:${{  github.sha }} --port ${{env.PORT}} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
+        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{  github.sha }} --port ${{env.PORT}} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
