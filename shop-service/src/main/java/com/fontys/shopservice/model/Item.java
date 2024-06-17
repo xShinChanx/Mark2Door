@@ -19,6 +19,9 @@ public class Item {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "price")
+    private Double price;
+
     @Column(name = "shop_id")
     private int shopId;
 }

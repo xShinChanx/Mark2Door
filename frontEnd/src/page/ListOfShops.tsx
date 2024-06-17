@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Shop from '../components/shop';
+import NavBar from "../components/navbar"
+
 
 type ShopType = {
   id: number;
@@ -26,9 +28,13 @@ const ListOfShops = () => {
 
   return (
     <div>
+    <NavBar /> 
+
+    <div>
       {shops.map((shop) => (
         <Shop key={shop.id} name={shop.name} description={shop.description} />
       ))}
+    </div>
     </div>
   );
 };

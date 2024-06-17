@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, FormEvent } from "react";
 import "../css/loginform.css";
+import NavBar from "../components/navbar"
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
@@ -20,7 +21,10 @@ const LoginForm = () => {
   };
 
   return (
+   <div>
+    <NavBar /> 
     <div className="login-container">
+
       <form className="login-form" onSubmit={handleSubmit}>
         <h1>Login</h1>
         {error && <p>{error}</p>}
@@ -41,6 +45,8 @@ const LoginForm = () => {
         <button type="submit">Login</button>
       </form>
     </div>
+    </div> 
+
   );
 };
 

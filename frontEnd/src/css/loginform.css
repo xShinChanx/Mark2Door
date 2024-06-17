@@ -1,3 +1,4 @@
+/* General Styles */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 * {
@@ -5,11 +6,18 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
+
 body, html {
   height: 100%;
   margin: 0;
+  padding: 0; /* Ensure no default padding or margin */
 }
 
+body {
+  padding-top: 60px; /* Adjust padding to account for the fixed navbar */
+}
+
+/* Login Form Styles */
 .login-container {
   position: absolute;
   top: 50%;
@@ -26,7 +34,6 @@ body, html {
   box-shadow: 0 0.188em 1.550em rgb(156, 156, 156);
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 h1 {
@@ -48,7 +55,7 @@ input {
 
 button {
   padding: 0.5em 2em;
-  background-color: #007bff;
+  background-color: #ab81e0;
   color: white;
   border: none;
   border-radius: 0.5em;
@@ -56,7 +63,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #ab81e0;
 }
 
 /* Custom styles for radio buttons */

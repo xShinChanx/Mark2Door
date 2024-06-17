@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, FormEvent } from "react";
 import "../css/loginform.css";
+import NavBar from "../components/navbar"
 
 const RegisterPage = () => {
   const [name, setName] = useState<string>("");
@@ -21,6 +22,9 @@ const RegisterPage = () => {
   };
 
   return (
+    <div>
+    <NavBar /> 
+
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h1>Register</h1>
@@ -71,6 +75,8 @@ const RegisterPage = () => {
         <button type="submit">Register</button>
       </form>
     </div>
+    </div>
+
   );
 };
 

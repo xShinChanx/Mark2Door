@@ -20,7 +20,7 @@ public class ShopController {
         return ResponseEntity.ok("Welcome to shop-service");
     }
 
-    @PostMapping("/shop")
+    @PostMapping("/createShop")
     public ResponseEntity<?> savedShop(@RequestBody Shop shop) {
         shopService.saveShopData(shop);
         return ResponseEntity.ok().build();
