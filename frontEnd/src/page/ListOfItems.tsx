@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Item from '../components/item'
+import NavBar from "../components/navbars/ShopOwnerNavbar"
+
 
 type ItemType = {
     id: number;
@@ -27,10 +29,14 @@ const ListOfItems = () => {
 
     return (
         <div>
-            {item.map((item) => (
-                <Item key={item.id} name={item.name} description={item.description}/>
-            ))}
+            <NavBar /> 
+            <div>
+                {item.map((item) => (
+                    <Item key={item.id} name={item.name} description={item.description}/>
+                ))}
+            </div>
         </div>
+
     );
 };
 

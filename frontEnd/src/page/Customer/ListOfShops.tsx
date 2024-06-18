@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Shop from '../components/shop';
-import NavBar from "../components/navbar"
+import Shop from '../../components/shop';
+import NavBar from "../../components/navbars/ShopOwnerNavbar"
 import Cookies from 'js-cookie'; // Assuming you're using js-cookie
 
 

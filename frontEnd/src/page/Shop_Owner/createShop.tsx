@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, FormEvent } from "react";
 import "../../css/loginform.css";
-import NavBar from "../../components/navbar";
+import NavBar from "../../components/navbars/ShopOwnerNavbar";
 
 const CreateShopForm = () => {
   const [name, setName] = useState<string>("");

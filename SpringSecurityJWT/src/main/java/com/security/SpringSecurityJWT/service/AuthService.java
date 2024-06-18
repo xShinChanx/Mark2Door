@@ -52,12 +52,14 @@ public class AuthService {
           var jwt = jwtUtils.generateToken(user);
           var refreshToken = jwtUtils.generateToken(user);
           Integer userId = user.getId();
+          String role = user.getRole();
           response.setStatusCode(200);
           response.setToken(jwt);
           response.setRefreshToken(refreshToken);
           response.setExpirationTime("24Hr");
           response.setMessage("Authorization successful");
           response.setUserId(userId);
+          response.setRole(role);
         }catch(Exception expection ){
             response.setStatusCode(500);
             response.setError(expection.getMessage());

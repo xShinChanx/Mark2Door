@@ -1,28 +1,29 @@
 import axios from "axios";
-import { useState, FormEvent } from "react";
+import { useState} from "react";
 import Cookies from "js-cookie";
 import "../css/loginform.css";
-import NavBar from "../components/navbar";
+import { useNavigate, Link } from "react-router-dom"; // Updated to useNavigate
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:6060/auth/signin", { email, password });
       console.log(response.data);
   
-      // Extract the token, refreshToken (optional), and userId from the response
-      const { token, refreshToken, userId } = response.data;
+      // Extract the token, refreshToken (optional), userId, and role from the response
+      const { token, refreshToken, userId, role } = response.data;
   
-      // Check if userId exists in the response (optional)
-      if (!userId) {
-        console.error("User ID not found in response");
-        setError("An error occurred (missing user ID)");
-        return; // Handle missing userId gracefully (optional)
+      // Check if userId and role exist in the response
+      if (!userId || !role) {
+        console.error("User ID or role not found in response");
+        setError("An error occurred (missing user ID or role)");
+        return; // Handle missing userId or role gracefully
       }
   
       // Save the token, refresh token (optional), and userId as cookies
@@ -30,7 +31,16 @@ const LoginForm = () => {
       Cookies.set("refreshToken", refreshToken, { secure: true, sameSite: 'strict' });
       Cookies.set("userId", userId, { secure: true, sameSite: 'strict' });
   
-      // You can also handle redirection or other logic after successful login here
+      // Redirect based on user role
+      if (role === "ShopOwner") {
+        navigate("/homepageShopOwner");
+      } else if (role === "Customer") {
+        navigate("/homepageCustomer");
+      } else {
+        console.error("Unknown user role");
+        setError("An error occurred (unknown user role)");
+      }
+
       console.log("Login successful, tokens and user ID saved as cookies");
     } catch (err) {
       console.error(err);
@@ -40,7 +50,6 @@ const LoginForm = () => {
 
   return (
     <div>
-      <NavBar />
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <h1>Login</h1>
@@ -58,7 +67,12 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit">Login</button>
+          <p style={{ margin: "5px 0 0", fontSize: "14px" }}>
+          Don't have an account?{" "}
+          <Link to="/signup" style={{ fontSize: "14px", color: "black" }}>Register</Link>
+        </p>
         </form>
+
       </div>
     </div>
   );
