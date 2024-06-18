@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/shop")
@@ -21,14 +22,19 @@ public class ShopController {
     }
 
     @PostMapping("/createShop")
-    public ResponseEntity<?> savedShop(@RequestBody Shop shop) {
-        shopService.saveShopData(shop);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> savedShop(@RequestBody Shop shop) {
+        String result = shopService.saveShopData(shop);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/shops")
     public ResponseEntity<List<Shop>> getUserData() {
         List<Shop> shops = shopService.getListOfShops();
         return new ResponseEntity<>(shops, HttpStatus.OK);
+    }
+
+    @GetMapping("/shopId/{ownerId}")
+    public Optional<Long> getShopIdByOwnerId(@PathVariable Long ownerId) {
+        return shopService.getShopIdByOwnerId(ownerId);
     }
 }

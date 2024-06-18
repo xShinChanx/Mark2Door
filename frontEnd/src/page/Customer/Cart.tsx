@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'; // Assuming you're using js-cookie
+import Item from '../../components/Item/CartItem'
 
 const Shop = () => {
     const [cart, setCart] = useState<number[]>([]);
     const [items, setItems] = useState<{ id: number, name: string, description: string, count: number }[]>([]);
     
     const userId = Cookies.get("userId");
+    const token = Cookies.get("token");
     console.log(userId);
 
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const token = Cookies.get("token");
-                console.log(token);
-
                 const response = await fetch(`http://localhost:8085/cart/getItems?userID=${userId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
@@ -32,9 +31,6 @@ const Shop = () => {
     useEffect(() => {
         const fetchItemDetails = async () => {
             try {
-                const token = Cookies.get("token"); // Get the token here as well
-                console.log(token);
-
                 const itemDetailsPromises = cart.map(itemID =>
                     fetch(`http://localhost:8085/shop/findItemById?itemID=${itemID}`, {
                         headers: {
@@ -73,12 +69,12 @@ const Shop = () => {
         <div>
             {items.length > 0 ? (
                 items.map(item => (
-                    <div key={item.id} className="item-container">
-                        <h2 className="item-header">Name: {item.name}</h2>
-                        <p className="item-description">Description: {item.description}</p>
-                        <p className="item-count">Count: {item.count}</p>
-                        <div className="remove-button">Remove From Cart</div>
-                    </div>
+                    <Item
+                        key={item.id}
+                        name={item.name}
+                        description={item.description}
+                        count={item.count}
+                    />
                 ))
             ) : (
                 <p>Loading items...</p>

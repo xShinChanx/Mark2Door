@@ -11,18 +11,18 @@ function NavBar() {
     },
     {
       id: 2,
-      path: "/item",
+      path: "/items",
       text: "Items"
     },
     {
       id: 3,
-      path: "/Login",
-      text: "Login"
+      path: "/shops",
+      text: "Shops"
     },
     {
       id: 4,
-      path: "/shops",
-      text: "Shops"
+      path: "/profile",
+      text: "Profile"
     }
   ];
   

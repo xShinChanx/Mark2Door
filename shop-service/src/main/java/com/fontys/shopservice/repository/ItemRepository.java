@@ -3,5 +3,8 @@ package com.fontys.shopservice.repository;
 import com.fontys.shopservice.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ItemRepository extends JpaRepository<Item, Long>  {
+import java.util.List;
+
+public interface ItemRepository extends JpaRepository<Item, Long> {
+    List<Item> findByShopId(int shopId);
 }

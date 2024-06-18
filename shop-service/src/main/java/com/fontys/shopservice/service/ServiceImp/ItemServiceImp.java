@@ -29,4 +29,9 @@ public class ItemServiceImp implements ItemService {
     public Optional<Item> findItem(Long itemID) {
         return itemRepository.findById(itemID);
     }
+
+    @Override
+    public List<Item> getItemsByShopId(int shopId) {
+        return itemRepository.findByShopId(shopId);
+    }
 }

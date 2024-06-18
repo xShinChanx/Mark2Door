@@ -11,19 +11,20 @@ function NavBar() {
     },
     {
       id: 2,
-      path: "/item",
+      path: "/createItem",
       text: "Items"
     },
     {
       id: 3,
-      path: "/Logout",
-      text: "LogOut"
+      path: "/myShop",
+      text: "My Shop"
     },
     {
       id: 4,
-      path: "/shops",
-      text: "Shops"
+      path: "/logout",
+      text: "Log Out"
     }
+    
   ];
   
   return (

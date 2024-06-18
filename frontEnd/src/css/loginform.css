@@ -94,3 +94,19 @@ input[type="radio"] {
   font-weight: bold;
   font-size: 0.875em; /* Adjust the font size here */
 }
+
+.MyShop {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333; /* Dark gray color */
+            margin-bottom: 1em;
+            text-align: center; /* Center the text */
+        }
+
+button.CreateShop {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+    justify-content: center;
+  align-items: center;
+}

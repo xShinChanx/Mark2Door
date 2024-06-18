@@ -2,13 +2,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './page/LoginPage';
 import RegisterPage from './page/RegisterPage';
 import ListOfShops from './page/Customer/ListOfShops';
-import ListOfItems from './page/ListOfItems';
+import ListOfItems from './page/Customer/ListOfItems';
 import Cart from './page/Customer/Cart';
 import CreateShop from './page/Shop_Owner/createShop'
 import CreateItem from './page/Shop_Owner/createItem'
 import HomePageCustomer from './page/Customer/HomepageCustomer'
 import HomePageShopOwner from './page/Shop_Owner/HomepageShopOwner'
 import HomePage from './page/Homepage'
+import MyShop from './page/Shop_Owner/myshop'
 
 
 import TestPage from './page/TestPage';
@@ -28,6 +29,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/createShop" element={<CreateShop />} />
           <Route path="/createItem" element={<CreateItem />} />
+          <Route path="/myshop" element={<MyShop />} />
           <Route path="/test" element={<TestPage />} />
         </Routes>
       </div>

@@ -37,4 +37,9 @@ public class ItemController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/findItemsbyShopId")
+    public List<Item> getItemsByShopId(@RequestParam int shopId) {
+        return itemService.getItemsByShopId(shopId);
+    }
 }

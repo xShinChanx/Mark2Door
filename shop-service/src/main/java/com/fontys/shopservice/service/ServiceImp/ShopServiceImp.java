@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ShopServiceImp implements ShopService {
@@ -14,8 +15,20 @@ public class ShopServiceImp implements ShopService {
     ShopRepository shopRepository;
 
     @Override
-    public Shop saveShopData(Shop shop) {
-        return shopRepository.save(shop);
+    public String saveShopData(Shop shop) {
+        Optional<Shop> existingShop = shopRepository.findByOwnerId(shop.getOwnerId());
+        if (existingShop.isPresent()) {
+            return "Owner already has a shop";
+        } else {
+            shopRepository.save(shop);
+            return "Shop created successfully";
+        }
+    }
+
+    @Override
+    public Optional<Long> getShopIdByOwnerId(Long ownerId) {
+        Optional<Shop> shop = shopRepository.findByOwnerId(ownerId);
+        return shop.map(Shop::getId);
     }
 
     @Override

@@ -72,4 +72,15 @@
   .button:hover {
     background-color: #0056b3;
   }
+
+  .item-container {
+    margin-bottom: 20px; /* Adjust spacing between items */
+  }
+  
+  .item-divider {
+    margin-top: 10px; /* Adjust spacing above the line */
+    border: none;
+    height: 3px; /* Make the line thicker */
+    background-color: #333; /* Darker color for the line */
+  }
   

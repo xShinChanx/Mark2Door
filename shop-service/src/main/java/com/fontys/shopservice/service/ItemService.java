@@ -9,4 +9,5 @@ public interface ItemService {
     Item saveItem(Item item);
     List<Item> getListOfItems();
     Optional<Item> findItem (Long itemID);
+    List<Item> getItemsByShopId(int shopId);
 }
