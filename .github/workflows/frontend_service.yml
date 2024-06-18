@@ -12,6 +12,7 @@ env:
   PORT: 3000      
             
 #Deploy Google run
+jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
