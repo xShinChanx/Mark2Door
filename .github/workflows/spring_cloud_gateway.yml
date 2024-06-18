@@ -1,0 +1,68 @@
+name: Java CI CD
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: market2door-426707
+  SERVICE: gateway-service
+  REGION: europe-west4
+  PORT: 8085
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+          
+      - name: Build gateway Microservice
+        working-directory: ./spring-cloud-gateway
+        run: mvn --batch-mode package -DskipTests
+        env:
+          DB_USER: ${{ secrets.User_DB_USER }}
+          DB_PASSWORD: ${{ secrets.User_DB_PASSWORD }}
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: java-app
+          path: "${{ github.workspace }}/spring-cloud-gateway/target/*.jar"
+      
+            
+#Deploy Google run
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Sets up the gcloud cli with the credentials we previously created, and will be storing within Github as secrets.
+      - name: Setup Cloud cli
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          service_account_key: ${{ secrets.GC_SE_KEY }}
+          export_default_credentials: true
+
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker
+
+      - name: Build Docker image
+        run: docker build -t gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }} -f ./spring-cloud-gateway/Dockerfile ./spring-cloud-gateway
+      
+      - name: Push Docker image to Container Registry
+        run: docker push gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }}
+
+      - name: Show Output
+        run: echo ${{ steps.gohibeesh.outputs.url }}
+
+      - name: Deploy to Cloud Run
+        id: gohibeesh
+        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{  github.sha }} --port ${{env.PORT}} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
