@@ -51,11 +51,13 @@ public class AuthService {
           System.out.println("USER IS: "+user);
           var jwt = jwtUtils.generateToken(user);
           var refreshToken = jwtUtils.generateToken(user);
+          Integer userId = user.getId();
           response.setStatusCode(200);
           response.setToken(jwt);
           response.setRefreshToken(refreshToken);
           response.setExpirationTime("24Hr");
           response.setMessage("Authorization successful");
+          response.setUserId(userId);
         }catch(Exception expection ){
             response.setStatusCode(500);
             response.setError(expection.getMessage());
@@ -78,5 +80,9 @@ public class AuthService {
             response.setStatusCode(500);
         }
         return response;
+    }
+
+    public Boolean validateToken(String token) {
+        return jwtUtils.validateToken(token);
     }
 }

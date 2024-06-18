@@ -60,6 +60,17 @@ public class JWTUtils {
     private boolean isTokenExpired(String token) {
         return extractClaims(token, Claims::getExpiration).before(new Date());
     }
+
+    public boolean validateToken(String token) {
+        String validated = token.trim();
+        try {
+            extractClaims(validated,Claims::getSubject);
+
+            return !isTokenExpired(token);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
 
 

@@ -14,6 +14,7 @@ import java.util.List;
 public class ReqRes {
 
     private int statusCode;
+    private int userId;
     private String error;
     private String message;
     private String token;

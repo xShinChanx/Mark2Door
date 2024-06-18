@@ -27,6 +27,11 @@ public class AuthController {
         return ResponseEntity.ok(authService.refreshToken(refreshTokenRequest));
     }
 
+    @PostMapping("/inner/validate")
+    public ResponseEntity<Boolean> validate(@RequestBody String token){
+        return ResponseEntity.ok(authService.validateToken(token));
+    }
+
     @GetMapping("/gfg")
     public ResponseEntity<String> getAnonymous() {
         return ResponseEntity.ok("Welcome to GeeksforGeeks");
