@@ -1,0 +1,36 @@
+
+server:
+  port: 8085
+
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: '*'
+            allowed-headers: '*'
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - UPDATE
+              - OPTIONS
+      routes:
+        - id: SHOP-SERVICE
+          uri: lb://SHOP-SERVICE
+          predicates:
+            - Path=/shop/**
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user/**
+        - id: CART-SERVICE
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/cart/**
