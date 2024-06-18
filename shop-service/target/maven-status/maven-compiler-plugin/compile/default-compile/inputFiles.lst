@@ -1,0 +1,15 @@
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/ShopServiceApplication.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/config/Configration.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/config/RabbitConfig.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/controller/ItemController.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/controller/ShopController.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/model/Item.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/model/Shop.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/rabbit/consumer.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/rabbit/publisher.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/repository/ItemRepository.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/repository/ShopRepository.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/service/ItemService.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/service/ServiceImp/ItemServiceImp.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/service/ServiceImp/ShopServiceImp.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/main/java/com/fontys/shopservice/service/ShopService.java

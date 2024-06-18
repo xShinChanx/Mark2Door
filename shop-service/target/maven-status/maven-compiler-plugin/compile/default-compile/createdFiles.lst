@@ -1,0 +1,16 @@
+com/fontys/shopservice/ShopServiceApplication.class
+com/fontys/shopservice/service/ShopService.class
+com/fontys/shopservice/controller/ShopController.class
+com/fontys/shopservice/rabbit/publisher.class
+com/fontys/shopservice/service/ItemService.class
+com/fontys/shopservice/repository/ItemRepository.class
+com/fontys/shopservice/service/ServiceImp/ItemServiceImp.class
+com/fontys/shopservice/model/Shop.class
+com/fontys/shopservice/service/ServiceImp/ShopServiceImp.class
+com/fontys/shopservice/config/Configration.class
+com/fontys/shopservice/config/RabbitConfig.class
+com/fontys/shopservice/config/Configration$1.class
+com/fontys/shopservice/repository/ShopRepository.class
+com/fontys/shopservice/controller/ItemController.class
+com/fontys/shopservice/rabbit/consumer.class
+com/fontys/shopservice/model/Item.class
