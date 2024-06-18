@@ -1,4 +1,4 @@
-name: Java CI CD
+name: Discovery - CI CD
 
 on:
   push:
