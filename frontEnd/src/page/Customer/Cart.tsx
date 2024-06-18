@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
-
+import Cookies from 'js-cookie'; // Assuming you're using js-cookie
 
 const Shop = () => {
     const [cart, setCart] = useState<number[]>([]);
     const [items, setItems] = useState<{ id: number, name: string, description: string, count: number }[]>([]);
-
-    // Hard-coded userID
-    const userID = 1;
+    
+    const userId = Cookies.get("userId");
+    console.log(userId);
 
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch(`http://localhost:8085/cart/getItems?userID=${userID}`);
+                const token = Cookies.get("token");
+                console.log(token);
+
+                const response = await fetch(`http://localhost:8085/cart/getItems?userID=${userId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
+                    },
+                });
                 const data = await response.json();
                 setCart(data);
             } catch (error) {
@@ -20,13 +27,20 @@ const Shop = () => {
         };
 
         fetchItems();
-    }, [userID]);
+    }, [userId]);
 
     useEffect(() => {
         const fetchItemDetails = async () => {
             try {
+                const token = Cookies.get("token"); // Get the token here as well
+                console.log(token);
+
                 const itemDetailsPromises = cart.map(itemID =>
-                    fetch(`http://localhost:8085/shop/findItemById?itemID=${itemID}`)
+                    fetch(`http://localhost:8085/shop/findItemById?itemID=${itemID}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`, // Include the Authorization header
+                        },
+                    })
                         .then(response => response.json())
                 );
                 const itemsData = await Promise.all(itemDetailsPromises);
