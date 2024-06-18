@@ -69,6 +69,7 @@ const CreateItemForm = () => {
 
   return (
     <div>
+    <NavBar />
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <h1>Create Item</h1>
