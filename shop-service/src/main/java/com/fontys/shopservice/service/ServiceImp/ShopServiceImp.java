@@ -35,4 +35,16 @@ public class ShopServiceImp implements ShopService {
     public List<Shop> getListOfShops() {
         return shopRepository.findAll();
     }
+
+    @Override
+    public String deleteShopByOwnerId(Long ownerId) {
+        Optional<Shop> shop = shopRepository.findByOwnerId(ownerId);
+        if (shop.isPresent()) {
+            shopRepository.delete(shop.get());
+            return "Shop deleted successfully";
+        } else {
+            return "Shop not found for owner ID: " + ownerId;
+        }
+    }
+
 }

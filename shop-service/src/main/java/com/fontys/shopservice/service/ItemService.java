@@ -10,4 +10,5 @@ public interface ItemService {
     List<Item> getListOfItems();
     Optional<Item> findItem (Long itemID);
     List<Item> getItemsByShopId(int shopId);
+    String deleteItemsByShopId(int shopId);
 }

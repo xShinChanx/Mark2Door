@@ -42,4 +42,21 @@ public class ItemController {
     public List<Item> getItemsByShopId(@RequestParam int shopId) {
         return itemService.getItemsByShopId(shopId);
     }
+
+    @DeleteMapping("/shop/{shopId}")
+    public ResponseEntity<String> deleteItemsByShopId(@PathVariable int shopId) {
+        String result = itemService.deleteItemsByShopId(shopId);
+        if (result.startsWith("All items")) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+    }
+
+
 }
+
+
+
+
+

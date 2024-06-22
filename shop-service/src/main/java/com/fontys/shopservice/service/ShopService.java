@@ -9,4 +9,6 @@ public interface ShopService {
     String saveShopData(Shop shop);
     List<Shop> getListOfShops();
     Optional<Long> getShopIdByOwnerId(Long ownerId);
-}
+    String deleteShopByOwnerId(Long ownerId);
+
+    }

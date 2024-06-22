@@ -1,1 +1,2 @@
-/home/shinchan/Documents/Mark2Door/shop-service/src/test/java/com/fontys/shopservice/ShopServiceApplicationTests.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/test/java/com/fontys/shopservice/ShopServiceIntegrationTests.java
+/home/shinchan/Documents/Mark2Door/shop-service/src/test/java/com/fontys/shopservice/TestH2Repository.java

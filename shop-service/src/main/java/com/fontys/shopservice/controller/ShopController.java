@@ -37,4 +37,15 @@ public class ShopController {
     public Optional<Long> getShopIdByOwnerId(@PathVariable Long ownerId) {
         return shopService.getShopIdByOwnerId(ownerId);
     }
+
+    @DeleteMapping("/delete/{ownerId}")
+    public ResponseEntity<String> deleteShopByOwnerId(@PathVariable Long ownerId) {
+        String deletionResult = shopService.deleteShopByOwnerId(ownerId);
+        return ResponseEntity.status(HttpStatus.OK).body(deletionResult);
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, World!";
+    }
 }

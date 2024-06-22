@@ -1,0 +1,23 @@
+swagger: '2.0'
+info:
+  title: api_gateway
+  description: API Gateway for handling authentication and user data
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /shop/test:
+    get:
+      summary: "Validate Token"
+      operationId: "validateToken"
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      responses:
+        200:
+          description: "Welcome"
+        401:
+          description: "error"
+  

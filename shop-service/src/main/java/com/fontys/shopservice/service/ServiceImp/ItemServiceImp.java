@@ -34,4 +34,15 @@ public class ItemServiceImp implements ItemService {
     public List<Item> getItemsByShopId(int shopId) {
         return itemRepository.findByShopId(shopId);
     }
+
+    @Override
+    public String deleteItemsByShopId(int shopId) {
+        List<Item> items = itemRepository.findByShopId(shopId);
+        if (!items.isEmpty()) {
+            itemRepository.deleteByShopId(shopId);
+            return "All items for shopId " + shopId + " deleted successfully";
+        } else {
+            return "No items found for shopId " + shopId;
+        }
+    }
 }
