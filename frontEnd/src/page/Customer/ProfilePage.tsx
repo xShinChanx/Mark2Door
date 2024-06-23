@@ -41,6 +41,7 @@ function Profile() {
 
   const deleteAccount = () => {
     axios.get<UserData>(`https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/customerDelete/${userId}`);
+    axios.delete<UserData>(`https://user-service-jl4ebnk3lq-ez.a.run.app/user/${userId}`);
     navigate("/");
   }
 
