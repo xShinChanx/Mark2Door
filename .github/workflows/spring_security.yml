@@ -12,9 +12,6 @@ env:
   SERVICE: spring-security-service
   REGION: us-central1
   PORT: 6060
-  MAX_INSTANCES: 10  # Set your desired maximum number of instances here
-  CPU: 8  # Adjusted maximum CPU allocation (in vCPU)
-  MEMORY: 32Gi  # Set maximum memory allocation
 
 jobs:
   build:
