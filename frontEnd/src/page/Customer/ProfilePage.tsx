@@ -26,24 +26,46 @@ function Profile() {
 
   async function getUser() {
     try {
-      const response = await axios.get<UserData>(`https://new-gateway-6jhcj4ol.ew.gateway.dev/user/${userId}`);
+      const token = Cookies.get("token");
+  
+      const response = await axios.get<UserData>(
+        `https://new-gateway-6jhcj4ol.ew.gateway.dev/user/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
       setAddress(response.data.address);
       setHouseNo(response.data.houseNo);
       console.log(response.data);
     } catch (error) {
-      console.error(error);
+      console.error('Error getting user data:', error);
     }
   }
-
   const logOut = () => {
     navigate("/");
   };
 
   const deleteAccount = () => {
-    axios.get<UserData>(`https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/customerDelete/${userId}`);
-    axios.delete<UserData>(`https://user-service-jl4ebnk3lq-ez.a.run.app/user/${userId}`);
-    navigate("/");
-  }
+    try {
+      const token = Cookies.get("token");
+  
+      axios.get<UserData>(
+        `https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/customerDelete/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      navigate("/");
+    } catch (error) {
+      console.error('Error deleting account:', error);
+    }
+  };
 
   return (
     <div>

@@ -20,19 +20,30 @@ const AddAddressPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://user-service-jl4ebnk3lq-ez.a.run.app/user/create", {
-        address,
-        city,
-        houseNo,
-        userID
-      });
+      const token = Cookies.get("token");
+    
+      const response = await axios.post(
+        "https://new-gateway-6jhcj4ol.ew.gateway.dev/user/create",
+        {
+          address,
+          city,
+          houseNo,
+          userID
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+    
       console.log(response.data);
-      
+    
       // Redirect to profile page or another appropriate page after successful address addition
       navigate("/profile");
-    } catch (err) {
-      console.error(err);
-      setError("An error occurred");
+    } catch (error) {
+      // Handle error
+      console.error('Error adding address:', error);
     }
   };
 

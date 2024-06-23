@@ -8,7 +8,7 @@ export let options = {
 };
 
 export default function () {
-  const url = 'https://spring-security-service-jl4ebnk3lq-uc.a.run.app/auth/signin';
+  const url = 'https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/signin';
   const payload = JSON.stringify({
     email: 'anis@gmail.com',
     password: 'yeet',

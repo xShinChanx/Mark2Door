@@ -8,11 +8,11 @@ describe('My First Test', () => {
     // includes '/commands/actions'
 
     // Get an input, type into it
-    cy.get('#email').type('adel@gmail.com')
+    cy.get('#email').type('anis@gmail.com')
     cy.get('#password').type('yeet')
     cy.get('#ButtonLogin').click();
 
     //  Verify that the value has been updated
-    cy.url().should('include', '/homepageShopOwner')
+    cy.url().should('include', '/homepageCustomer')
   })
 })

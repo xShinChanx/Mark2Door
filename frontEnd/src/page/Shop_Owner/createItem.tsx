@@ -22,11 +22,11 @@ const CreateItemForm = () => {
 
       try {
         const response = await fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/shopId/${userId}`
-        //   , {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`
-        //   }
-        // }
+          , {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       );
       
         if (response.ok) {
@@ -52,14 +52,14 @@ const CreateItemForm = () => {
 
     try {
       const response = await axios.post(
-        "https://shop-service-jl4ebnk3lq-ez.a.run.app/shop/item",
+        "https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/item",
         { name, description, price, shopId }
-        // ,
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`
-        //   }
-        // }
+        ,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       );
       console.log(response.data);
       // Redirect to /myshop after successful item creation

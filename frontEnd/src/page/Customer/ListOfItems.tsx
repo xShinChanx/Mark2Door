@@ -20,11 +20,11 @@ type ItemType = {
         try {
           const token = Cookies.get("token");
           const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/items'
-          //   , {
-          //   headers: {
-          //     Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
-          //   },
-          // }
+            , {
+            headers: {
+              Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
+            },
+          }
         );
           const data = await response.json();
           setItems(data);
