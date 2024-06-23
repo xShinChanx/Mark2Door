@@ -1,8 +1,11 @@
 package com.fontys.userservice.repository;
 
-import com.fontys.userservice.model.User;
+import com.fontys.userservice.model.UserDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByEmail(String email);
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<UserDetails, Long> {
+    Optional<UserDetails> findByUserID(Long userID);
+    void deleteByUserID(Long userID);
 }

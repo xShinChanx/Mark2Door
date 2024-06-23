@@ -59,4 +59,21 @@ public class AuthController {
         }
     }
 
+    @DeleteMapping("/customerDelete/{id}")
+    public ResponseEntity<ReqRes> customerDelete(@PathVariable int id) {
+        ReqRes response = authService.deleteUserById(id);
+
+        // Convert id to long before sending
+        long longId = (long) id;
+        template.convertAndSend("user-exchange", "user-routingKey", longId);
+
+        if (response.getStatusCode() == 200) {
+            return ResponseEntity.ok(response);
+        } else if (response.getStatusCode() == 404) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
 }

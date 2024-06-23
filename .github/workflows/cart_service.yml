@@ -2,6 +2,8 @@ name: Cart - CI CD
 
 on:
   push:
+    paths:
+      - 'cart-service/**'
     branches:
       - main
 

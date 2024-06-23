@@ -10,6 +10,8 @@ import HomePageCustomer from './page/Customer/HomepageCustomer'
 import HomePageShopOwner from './page/Shop_Owner/HomepageShopOwner'
 import HomePage from './page/Homepage'
 import MyShop from './page/Shop_Owner/myshop'
+import AddAddress from './page/Customer/addAddress'
+import Profile from './page/Customer/ProfilePage'
 
 
 import TestPage from './page/TestPage';
@@ -30,6 +32,8 @@ function App() {
           <Route path="/createShop" element={<CreateShop />} />
           <Route path="/createItem" element={<CreateItem />} />
           <Route path="/myshop" element={<MyShop />} />
+          <Route path="/updateAddress" element={<AddAddress />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/test" element={<TestPage />} />
         </Routes>
       </div>

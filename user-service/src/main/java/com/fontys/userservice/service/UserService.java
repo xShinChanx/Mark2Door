@@ -1,13 +1,13 @@
 package com.fontys.userservice.service;
 
-import com.fontys.userservice.model.Request.CreateAccountRequest;
-import com.fontys.userservice.model.Request.LogInRequest;
-import com.fontys.userservice.model.User;
+import com.fontys.userservice.model.UserDetails;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
-    User createUser(CreateAccountRequest createAccount);
-    List<User> getListOfUsers();
-    String LogIn (LogInRequest logInRequest);
+    UserDetails createOrUpdateAddress(UserDetails userDetails);
+    void deleteAddressByUserID(Long userID);
+    List<UserDetails> getAllAddresses();
+    Optional<UserDetails> getUserDetailsByUserID(Long userID);
     }

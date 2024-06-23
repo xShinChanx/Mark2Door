@@ -2,6 +2,8 @@ name: secuirity - CI CD
 
 on:
   push:
+    paths:
+      - 'SpringSecurityJWT/**'
     branches:
       - main
 

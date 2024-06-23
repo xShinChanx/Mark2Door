@@ -55,18 +55,20 @@ const LoginForm = () => {
           <h1>Login</h1>
           {error && <p>{error}</p>}
           <input
+            id="email"
             type="text"
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            id="password"
             type="password"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Login</button>
+          <button type="submit" id="ButtonLogin">Login</button>
           <p style={{ margin: "5px 0 0", fontSize: "14px" }}>
           Don't have an account?{" "}
           <Link to="/signup" style={{ fontSize: "14px", color: "black" }}>Register</Link>

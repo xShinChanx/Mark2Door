@@ -3,8 +3,6 @@ package com.fontys.userservice.config;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,30 +10,23 @@ import org.springframework.context.annotation.Configuration;
 public class MessagingConfig {
 
     @Bean
-    public Queue queue(){
+    public Queue queue() {
         return new Queue("user-queue");
     }
 
     @Bean
-    public TopicExchange exchange(){
+    public TopicExchange exchange() {
         return new TopicExchange("user-exchange");
     }
 
     @Bean
-    public Binding binding(Queue queue, TopicExchange exchange){
+    public Binding binding(Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with("user-routingKey");
     }
 
     @Bean
-    public MessageConverter converter(){
-        return new Jackson2JsonMessageConverter();
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        return new RabbitTemplate(connectionFactory);
     }
-
-    @Bean
-    public AmqpTemplate template(ConnectionFactory connectionFactory){
-        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(converter());
-        return rabbitTemplate;
-    }
-
 }
+

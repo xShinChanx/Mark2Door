@@ -8,16 +8,332 @@ schemes:
 produces:
   - application/json
 paths:
-  /shop/test:
-    get:
-      summary: "Validate Token"
-      operationId: "validateToken"
+  /shop/createShop:
+    post:
+      summary: "Create a new shop"
+      operationId: "createShop"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: shop
+          description: "Shop object that needs to be created"
+          required: true
+          schema:
+            $ref: "#/definitions/Shop"
       x-google-backend:
         address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
         path_translation: APPEND_PATH_TO_ADDRESS
       responses:
         200:
-          description: "Welcome"
+          description: "Successful operation"
+          schema:
+            type: string
+        400:
+          description: "Invalid input"
         401:
-          description: "error"
-  
+          description: "Unauthorized"
+        500:
+          description: "Internal server error"
+  /shop/shops:
+    get:
+      summary: "Get list of shops"
+      operationId: "getShops"
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Shop"
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal server error"
+  /shop/shopId/{ownerId}:
+    get:
+      summary: "Get shop ID by owner ID"
+      operationId: "getShopIdByOwnerId"
+      parameters:
+        - in: path
+          name: ownerId
+          required: true
+          type: integer
+          format: int64
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: integer
+            format: int64
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal server error"
+  /shop/delete/{ownerId}:
+    delete:
+      summary: "Delete shop by owner ID"
+      operationId: "deleteShopByOwnerId"
+      parameters:
+        - in: path
+          name: ownerId
+          required: true
+          type: integer
+          format: int64
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: string
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal server error"
+  /shop/item:
+    post:
+      summary: "Create an item"
+      operationId: "createItem"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: item
+          description: "Item object that needs to be created"
+          required: true
+          schema:
+            $ref: "#/definitions/Item"
+      responses:
+        200:
+          description: "Item created successfully"
+        400:
+          description: "Invalid input"
+        401:
+          description: "Unauthorized"
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+  /shop/items:
+    get:
+      summary: "Get list of items"
+      operationId: "getItems"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Item"
+        401:
+          description: "Unauthorized"
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+  /shop/findItemById:
+    get:
+      summary: "Find item by ID"
+      operationId: "findItemById"
+      parameters:
+        - in: query
+          name: itemID
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Item"
+        404:
+          description: "Item not found"
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+  /shop/findItemsByShopId:
+    get:
+      summary: "Find items by shop ID"
+      operationId: "findItemsByShopId"
+      parameters:
+        - in: query
+          name: shopId
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Item"
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+  /shop/shop/{shopId}:
+    delete:
+      summary: "Delete items by shop ID"
+      operationId: "deleteItemsByShopId"
+      parameters:
+        - in: path
+          name: shopId
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "Items deleted successfully"
+        404:
+          description: "Items not found"
+      x-google-backend:
+        address: "https://shop-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+  /cart/carts:
+    get:
+      summary: "Get List of Carts"
+      operationId: "getCarts"
+      x-google-backend:
+        address: "https://cart-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      responses:
+        200:
+          description: "List of carts retrieved successfully"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Cart"
+        401:
+          description: "Unauthorized"
+  /cart/addItemToCart:
+    post:
+      summary: "Add Item to Cart"
+      operationId: "addItemToCart"
+      x-google-backend:
+        address: "https://cart-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - in: body
+          name: addItemToCartRequest
+          description: "Request to add item to cart"
+          required: true
+          schema:
+            $ref: "#/definitions/AddItemToCartRequest"
+      responses:
+        200:
+          description: "Item added to cart successfully"
+        401:
+          description: "Unauthorized"
+  /cart/deleteItemFromCart:
+    delete:
+      summary: "Remove Item from Cart"
+      operationId: "removeItemFromCart"
+      x-google-backend:
+        address: "https://cart-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - in: body
+          name: removeItemFromCartRequest
+          description: "Request to remove item from cart"
+          required: true
+          schema:
+            $ref: "#/definitions/RemoveItemFromCartRequest"
+      responses:
+        200:
+          description: "Item removed from cart successfully"
+        401:
+          description: "Unauthorized"
+  /cart/getItems:
+    get:
+      summary: "Get List of Items"
+      operationId: "getCartItems"
+      x-google-backend:
+        address: "https://cart-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - in: query
+          name: userID
+          description: "User ID to get list of items in cart"
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: "List of items retrieved successfully"
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        401:
+          description: "Unauthorized"
+definitions:
+  Item:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+        format: double
+      shopId:
+        type: integer
+    required:
+      - name
+      - description
+      - price
+      - shopId
+  Shop:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      description:
+        type: string
+      ownerId:
+        type: integer
+        format: int64
+  Cart:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      userID:
+        type: integer
+        format: int64
+      itemID:
+        type: integer
+        format: int64
+  AddItemToCartRequest:
+    type: object
+    properties:
+      userID:
+        type: integer
+        format: int64
+      itemID:
+        type: integer
+        format: int64
+  RemoveItemFromCartRequest:
+    type: object
+    properties:
+      userID:
+        type: integer
+        format: int64
+      itemID:
+        type: integer
+        format: int64

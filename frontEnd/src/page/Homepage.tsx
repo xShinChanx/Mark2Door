@@ -9,23 +9,23 @@ const HomePage: React.FC = () => {
         <NavBar /> 
 
         <div className="description">
-          <div className="Question">What is SounDrive?</div>
+          <div className="Question">What is Market2Door?</div>
           <hr className="line" />
   
           <div className="container">
             <div className="box">
-              <h2 className="items">First Step</h2>
-              <p className="itemsInfo">Create an account and Login.</p>
+              <h2 className="items">First</h2>
+              <p className="itemsInfo">Connect Local Markets to People</p>
             </div>
   
             <div className="box">
-              <h2 className="items">Second Step</h2>
-              <p className="itemsInfo">Create a playlist and add songs to it.</p>
+              <h2 className="items">Second</h2>
+              <p className="itemsInfo">Reduces Carbon Waste</p>
             </div>
   
             <div className="box">
-              <h2 className="items">Third Step</h2>
-              <p className="itemsInfo">Explore other playlists and share your playlist with others.</p>
+              <h2 className="items">Third</h2>
+              <p className="itemsInfo">Both Customer and Seller Benefits</p>
             </div>
           </div>
         </div>
