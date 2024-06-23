@@ -19,11 +19,13 @@ const ListOfShops = () => {
         const token = Cookies.get("token");
         console.log(token);
 
-        const response = await fetch('http://localhost:8085/shop/shops', {
-          headers: {
-            Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
-          },
-        });
+        const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/shops'
+        //   , {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
+        //   },
+        // }
+      );
 
         const data = await response.json();
         setShops(data);

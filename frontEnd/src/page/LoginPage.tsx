@@ -13,7 +13,7 @@ const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:6060/auth/signin", { email, password });
+      const response = await axios.post("https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/signin", { email, password });
       console.log(response.data);
   
       // Extract the token, refreshToken (optional), userId, and role from the response

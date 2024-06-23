@@ -26,7 +26,7 @@ function Profile() {
 
   async function getUser() {
     try {
-      const response = await axios.get<UserData>(`http://localhost:8888/user/${userId}`);
+      const response = await axios.get<UserData>(`https://new-gateway-6jhcj4ol.ew.gateway.dev/user/${userId}`);
       setAddress(response.data.address);
       setHouseNo(response.data.houseNo);
       console.log(response.data);
@@ -40,7 +40,7 @@ function Profile() {
   };
 
   const deleteAccount = () => {
-    axios.get<UserData>(`http://localhost:6060/auth/customerDelete/${userId}`);
+    axios.get<UserData>(`https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/customerDelete/${userId}`);
     navigate("/");
   }
 

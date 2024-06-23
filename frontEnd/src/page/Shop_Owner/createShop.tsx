@@ -20,17 +20,18 @@ const CreateShopForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8085/shop/createShop",
+        "https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/createShop",
         { 
           name, 
           description, 
           ownerId 
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
         }
+        // ,
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`
+        //   }
+        // }
       );
       console.log(response.data);
       navigate('/homepageShopOwner'); // Redirect to /homepageShopOwner

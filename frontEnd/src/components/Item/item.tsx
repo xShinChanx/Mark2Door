@@ -10,7 +10,7 @@ type ItemProps = {
 const Item = ({ name, description, itemID, userID }: ItemProps) => {
   const addToCart = async () => {
     try {
-      const response = await fetch('http://localhost:8886/cart/addItemToCart', {
+      const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/addItemToCart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

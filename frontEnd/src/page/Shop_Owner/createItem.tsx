@@ -21,11 +21,13 @@ const CreateItemForm = () => {
       const userId = Cookies.get("userId");
 
       try {
-        const response = await fetch(`http://localhost:8085/shop/shopId/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const response = await fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/shopId/${userId}`
+        //   , {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`
+        //   }
+        // }
+      );
       
         if (response.ok) {
           const data = await response.json();
@@ -50,13 +52,14 @@ const CreateItemForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8085/shop/item",
-        { name, description, price, shopId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        "https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/item",
+        { name, description, price, shopId }
+        // ,
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`
+        //   }
+        // }
       );
       console.log(response.data);
       // Redirect to /myshop after successful item creation

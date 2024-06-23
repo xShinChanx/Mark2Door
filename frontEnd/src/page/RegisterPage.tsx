@@ -14,7 +14,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:6060/auth/signup", { name, email, password, role });
+      const response = await axios.post("https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/signup", { name, email, password, role });
       console.log(response.data);
       
       // Redirect to /login after successful registration

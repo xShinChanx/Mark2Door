@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'; // Assuming you're using js-cookie
 import Item from '../../components/Item/CartItem'
+import '../../css/homepage.css';
+
 
 const Shop = () => {
     const [cart, setCart] = useState<number[]>([]);
@@ -13,11 +15,13 @@ const Shop = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch(`http://localhost:8085/cart/getItems?userID=${userId}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
-                    },
-                });
+                const response = await fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/getItems?userID=${userId}`
+                //     , {
+                //     headers: {
+                //         Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
+                //     },
+                // }
+            );
                 const data = await response.json();
                 setCart(data);
             } catch (error) {
@@ -32,11 +36,13 @@ const Shop = () => {
         const fetchItemDetails = async () => {
             try {
                 const itemDetailsPromises = cart.map(itemID =>
-                    fetch(`http://localhost:8085/shop/findItemById?itemID=${itemID}`, {
-                        headers: {
-                            Authorization: `Bearer ${token}`, // Include the Authorization header
-                        },
-                    })
+                    fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/findItemById?itemID=${itemID}`
+                    //     , {
+                    //     headers: {
+                    //         Authorization: `Bearer ${token}`, // Include the Authorization header
+                    //     },
+                    // }
+                )
                         .then(response => response.json())
                 );
                 const itemsData = await Promise.all(itemDetailsPromises);
@@ -68,14 +74,19 @@ const Shop = () => {
     return (
         <div>
             {items.length > 0 ? (
-                items.map(item => (
-                    <Item
-                        key={item.id}
-                        name={item.name}
-                        description={item.description}
-                        count={item.count}
-                    />
-                ))
+                <>
+                    {items.map(item => (
+                        <Item
+                            key={item.id}
+                            name={item.name}
+                            description={item.description}
+                            count={item.count}
+                        />
+                    ))}
+                    <button className="checkout-button">
+                        Checkout
+                    </button>
+                </>
             ) : (
                 <p>Loading items...</p>
             )}
