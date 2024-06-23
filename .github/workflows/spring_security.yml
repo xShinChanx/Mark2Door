@@ -10,7 +10,7 @@ on:
 env:
   PROJECT_ID: market2door-426707
   SERVICE: spring-security-service
-  REGION: europe-west4
+  REGION: us-central1
   PORT: 6060
   MAX_INSTANCES: 10  # Set your desired maximum number of instances here
   CPU: 1  # Adjusted maximum CPU allocation (in vCPU)

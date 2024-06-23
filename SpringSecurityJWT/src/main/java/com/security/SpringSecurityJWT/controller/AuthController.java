@@ -46,7 +46,7 @@ public class AuthController {
     public ResponseEntity<ReqRes> deleteUser(@PathVariable int id) {
         ReqRes response = authService.deleteUserById(id);
 
-        // Convert id to long before sending
+        // Convert id to long before sendingwsad
         long longId = (long) id;
         template.convertAndSend("shop-exchange", "shop-routingKey", longId);
 
@@ -65,7 +65,7 @@ public class AuthController {
         template.convertAndSend("user-exchange", "user-routingKey", longId);
         ReqRes response = authService.deleteUserById(id);
 
-        // Convert id to long before sending gfsddd 
+        // Convert id to long before sending gfsddd
 
 
         if (response.getStatusCode() == 200) {
