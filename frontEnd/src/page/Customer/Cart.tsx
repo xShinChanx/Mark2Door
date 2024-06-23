@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'; // Assuming you're using js-cookie
 import Item from '../../components/Item/CartItem'
 import '../../css/homepage.css';
+import axios from "axios";
+import NavBar from "../../components/navbars/CustomerNavbar"
+
 
 
 const Shop = () => {
@@ -14,23 +17,21 @@ const Shop = () => {
 
     useEffect(() => {
         const fetchItems = async () => {
-            try {
-                const response = await fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/getItems?userID=${userId}`
-                //     , {
-                //     headers: {
-                //         Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
-                //     },
-                // }
-            );
-                const data = await response.json();
-                setCart(data);
-            } catch (error) {
-                console.error(error);
-            }
+          try {
+            const response = await axios.get(`https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/getItems`, {
+              params: {
+                userID: userId,
+              },
+            });
+            const data = response.data;
+            setCart(data);
+          } catch (error) {
+            console.error(error);
+          }
         };
-
+    
         fetchItems();
-    }, [userId]);
+      }, [userId]);
 
     useEffect(() => {
         const fetchItemDetails = async () => {
@@ -73,6 +74,9 @@ const Shop = () => {
 
     return (
         <div>
+        <NavBar /> 
+
+        <div>
             {items.length > 0 ? (
                 <>
                     {items.map(item => (
@@ -90,6 +94,7 @@ const Shop = () => {
             ) : (
                 <p>Loading items...</p>
             )}
+        </div>
         </div>
     );
 };

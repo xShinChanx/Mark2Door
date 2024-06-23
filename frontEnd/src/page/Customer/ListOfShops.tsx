@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Shop from '../../components/shop';
-import NavBar from "../../components/navbars/ShopOwnerNavbar"
+import NavBar from "../../components/navbars/CustomerNavbar"
 import Cookies from 'js-cookie'; // Assuming you're using js-cookie
 
 
@@ -40,7 +40,6 @@ const ListOfShops = () => {
   return (
     <div>
       <NavBar /> 
-
       <div>
         {shops.map((shop) => (
           <Shop key={shop.id} name={shop.name} description={shop.description} />

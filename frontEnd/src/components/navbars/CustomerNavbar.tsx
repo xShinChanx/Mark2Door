@@ -6,7 +6,7 @@ function NavBar() {
   const links = [
     {
       id: 1,
-      path: "/",
+      path: "/homepageCustomer",
       text: "Home"
     },
     {
@@ -18,9 +18,19 @@ function NavBar() {
       id: 3,
       path: "/shops",
       text: "Shops"
-    },
+    },    
     {
       id: 4,
+      path: "/updateAddress",
+      text: "Add Address"
+    },
+    {
+      id: 5,
+      path: "/cart",
+      text: "My Cart"
+    },
+    {
+      id: 6,
       path: "/profile",
       text: "Profile"
     }
