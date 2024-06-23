@@ -1,4 +1,4 @@
-name: secuirity - CI CD
+name: security-ci-cd
 
 on:
   push:
@@ -12,6 +12,7 @@ env:
   SERVICE: spring-security-service
   REGION: europe-west4
   PORT: 6060
+  MAX_INSTANCES: 100  # Set your desired maximum number of instances here
 
 jobs:
   build:
@@ -38,15 +39,14 @@ jobs:
           name: java-app
           path: "${{ github.workspace }}/SpringSecurityJWT/target/*.jar"
       
-            
-#Deploy Google run
+# Deploy Google Cloud Run
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Sets up the gcloud cli with the credentials we previously created, and will be storing within Github as secrets.
-      - name: Setup Cloud cli
+
+      - name: Setup Google Cloud CLI
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: ${{ env.PROJECT_ID }}
@@ -62,9 +62,12 @@ jobs:
       - name: Push Docker image to Container Registry
         run: docker push gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }}
 
-      - name: Show Output
-        run: echo ${{ steps.gohibeesh.outputs.url }}
-
       - name: Deploy to Cloud Run
-        id: gohibeesh
-        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{  github.sha }} --port ${{env.PORT}} --region ${{env.REGION}} --allow-unauthenticated || true
+        id: deploy_cloud_run
+        run: |
+          gcloud run deploy ${{ env.SERVICE }} \
+            --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }} \
+            --port ${{ env.PORT }} \
+            --region ${{ env.REGION }} \
+            --max-instances ${{ env.MAX_INSTANCES }} \
+            --allow-unauthenticated || true
