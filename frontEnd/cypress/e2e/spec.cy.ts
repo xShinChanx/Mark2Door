@@ -1,6 +1,6 @@
 describe('My First Test', () => {
   it('Gets, types and asserts', () => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('https://frontend-service-jl4ebnk3lq-ez.a.run.app')
 
     cy.contains('Login').click()
 
