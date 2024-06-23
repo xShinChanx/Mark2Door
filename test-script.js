@@ -2,12 +2,12 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export let options = {
-  vus: 800,
-  duration: '5s', // Increased to 30 seconds
+  vus: 1000,
+  duration: '30s', // Increased to 30 seconds
 };
 
 export default function () {
-  const url = 'https://spring-security-service-jl4ebnk3lq-ez.a.run.app/auth/signin';
+  const url = 'https://spring-security-service-jl4ebnk3lq-uc.a.run.app/auth/signin';
   const payload = JSON.stringify({
     email: 'anis@gmail.com',
     password: 'yeet',
