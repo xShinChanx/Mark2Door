@@ -46,7 +46,6 @@ public class AuthController {
     public ResponseEntity<ReqRes> deleteUser(@PathVariable int id) {
         ReqRes response = authService.deleteUserById(id);
 
-        // Convert id to long before sending
         long longId = (long) id;
         template.convertAndSend("shop-exchange", "shop-routingKey", longId);
 
