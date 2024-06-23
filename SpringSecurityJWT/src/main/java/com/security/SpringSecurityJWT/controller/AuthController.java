@@ -61,11 +61,12 @@ public class AuthController {
 
     @DeleteMapping("/customerDelete/{id}")
     public ResponseEntity<ReqRes> customerDelete(@PathVariable int id) {
+        long longId = (long) id;
+        template.convertAndSend("user-exchange", "user-routingKey", longId);
         ReqRes response = authService.deleteUserById(id);
 
         // Convert id to long before sending
-        long longId = (long) id;
-        template.convertAndSend("user-exchange", "user-routingKey", longId);
+
 
         if (response.getStatusCode() == 200) {
             return ResponseEntity.ok(response);
