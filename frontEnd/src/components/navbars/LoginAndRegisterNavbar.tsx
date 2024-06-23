@@ -6,25 +6,9 @@ function NavBar() {
   const links = [
     {
       id: 1,
-      path: "/homepageShopOwner",
-      text: "Home"
-    },
-    {
-      id: 2,
-      path: "/createItem",
-      text: "Items"
-    },
-    {
-      id: 3,
-      path: "/myShop",
-      text: "My Shop"
-    },
-    {
-      id: 4,
       path: "/",
-      text: "Log Out"
+      text: "Home"
     }
-    
   ];
   
   return (

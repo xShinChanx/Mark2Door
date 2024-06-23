@@ -11,7 +11,7 @@ function NavBar() {
     },
     {
       id: 2,
-      path: "/",
+      path: "/itemss",
       text: "Items"
     }
   ];

@@ -12,6 +12,7 @@ import HomePage from './page/Homepage'
 import MyShop from './page/Shop_Owner/myshop'
 import AddAddress from './page/Customer/addAddress'
 import Profile from './page/Customer/ProfilePage'
+import PublicItem from './page/PublicListOfItems'
 
 
 import TestPage from './page/TestPage';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/myshop" element={<MyShop />} />
           <Route path="/updateAddress" element={<AddAddress />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/itemss" element={<PublicItem />} />
           <Route path="/test" element={<TestPage />} />
         </Routes>
       </div>

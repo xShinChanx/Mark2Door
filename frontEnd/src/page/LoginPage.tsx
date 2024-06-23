@@ -3,6 +3,8 @@ import { useState} from "react";
 import Cookies from "js-cookie";
 import "../css/loginform.css";
 import { useNavigate, Link } from "react-router-dom"; // Updated to useNavigate
+import NavBar from "../components/navbars/LoginAndRegisterNavbar"
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
@@ -50,6 +52,7 @@ const LoginForm = () => {
 
   return (
     <div>
+      <NavBar /> 
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <h1>Login</h1>

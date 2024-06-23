@@ -52,7 +52,7 @@ const CreateItemForm = () => {
 
     try {
       const response = await axios.post(
-        "https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/item",
+        "https://shop-service-jl4ebnk3lq-ez.a.run.app/shop/item",
         { name, description, price, shopId }
         // ,
         // {

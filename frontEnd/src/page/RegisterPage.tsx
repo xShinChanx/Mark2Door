@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../css/loginform.css";
+import NavBar from "../components/navbars/CommonNavbar"
+
 
 const RegisterPage = () => {
   const [name, setName] = useState<string>("");
@@ -27,6 +29,7 @@ const RegisterPage = () => {
 
   return (
     <div>
+        <NavBar /> 
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <h1>Register</h1>

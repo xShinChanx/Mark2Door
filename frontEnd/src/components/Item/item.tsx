@@ -1,6 +1,4 @@
 import '../../css/component/itemComponent.css'
-import axios from "axios";
-
 
 type ItemProps = {
   name: string;
@@ -12,21 +10,25 @@ type ItemProps = {
 const Item = ({ name, description, itemID, userID }: ItemProps) => {
   const addToCart = async () => {
     try {
-      const response = await axios.post(
-        'https://cart-service-jl4ebnk3lq-ez.a.run.app/cart/addItemToCart', 
-        { 
-          userID: userID, 
-          itemID: itemID 
-        }, 
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      console.log('Response:', response.data);
+      const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/addItemToCart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userID: userID,
+          itemID: itemID,
+        }),
+      });
+      if (response.ok) {
+        alert('Item added to cart successfully');
+      } else {
+        console.error('Failed to add item to cart');
+        alert('Failed to add item to cart');
+      }
     } catch (error) {
-      console.error('Error adding item to cart:', error);
+      console.error('Error:', error);
+      alert('Error occurred while adding item to cart');
     }
   };
 
