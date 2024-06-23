@@ -9,16 +9,12 @@ type ItemProps = {
 
 const Item = ({ name, description, itemID, userID }: ItemProps) => {
   const addToCart = async () => {
+    const axios = require('axios');
     try {
-      const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/addItemToCart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userID: userID,
-          itemID: itemID,
-        }),
+      const response = await axios.post('https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/addItemToCart', {
+        // Include your request payload here
+        userID: userID,
+        itemID: itemID
       });
       if (response.ok) {
         alert('Item added to cart successfully');
