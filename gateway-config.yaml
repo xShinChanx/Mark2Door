@@ -273,6 +273,96 @@ paths:
               format: int64
         401:
           description: "Unauthorized"
+  /user/create:
+    post:
+      summary: "Create or Update User Address"
+      operationId: "createOrUpdateAddress"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: userDetails
+          description: "User Details Object"
+          schema:
+            $ref: '#/definitions/UserDetails'
+      responses:
+        200:
+          description: "User address created or updated successfully"
+          schema:
+            $ref: '#/definitions/UserDetails'
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal Server Error"
+      x-google-backend:
+        address: "https://user-service-jl4ebnk3lq-ez.a.run.app"  # Replace with the actual URL of your user service
+        path_translation: APPEND_PATH_TO_ADDRESS  
+  /user/{userID}:
+    get:
+      summary: "Get User Details by User ID"
+      operationId: "getUserDetailsByUserID"
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          type: integer
+          format: int64
+          description: "ID of the user to retrieve details"
+      responses:
+        200:
+          description: "User details retrieved successfully"
+          schema:
+            $ref: '#/definitions/UserDetails'
+        401:
+          description: "Unauthorized"
+        404:
+          description: "User not found"
+      x-google-backend:
+        address: "https://user-service-jl4ebnk3lq-ez.a.run.app"  # Replace with the actual URL of your user service
+        path_translation: APPEND_PATH_TO_ADDRESS
+  /user:
+    delete:
+      summary: "Delete User Address by User ID"
+      operationId: "deleteAddressByUserID"
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          type: integer
+          format: int64
+          description: "ID of the user to delete address"
+      responses:
+        200:
+          description: "User address deleted successfully"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "User not found"
+      x-google-backend:
+        address: "https://user-service-jl4ebnk3lq-ez.a.run.app"  # Replace with the actual URL of your user service
+        path_translation: APPEND_PATH_TO_ADDRESS
+  /user:
+    get:
+      summary: "Get All User Addresses"
+      operationId: "getAllAddresses"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: "All user addresses retrieved successfully"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDetails'
+        401:
+          description: "Unauthorized"
+      x-google-backend:
+        address: "https://your-service-url"  # Replace with the actual URL of your user service
+        path_translation: APPEND_PATH_TO_ADDRESS
 definitions:
   Item:
     type: object
@@ -335,5 +425,20 @@ definitions:
         type: integer
         format: int64
       itemID:
+        type: integer
+        format: int64
+  UserDetails:
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      address:
+        type: string
+      city:
+        type: string
+      houseNo:
+        type: string
+      userID:
         type: integer
         format: int64
