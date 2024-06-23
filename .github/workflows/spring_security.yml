@@ -67,4 +67,4 @@ jobs:
 
       - name: Deploy to Cloud Run
         id: gohibeesh
-        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{  github.sha }} --port ${{env.PORT}} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
+        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{  github.sha }} --port ${{env.PORT}} --region ${{env.REGION}} --timeout=3000 --allow-unauthenticated || true

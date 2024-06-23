@@ -20,7 +20,7 @@ const AddAddressPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:6060/add/address", {
+      const response = await axios.post("https://user-service-jl4ebnk3lq-ez.a.run.app/add/address", {
         address,
         city,
         houseNo,

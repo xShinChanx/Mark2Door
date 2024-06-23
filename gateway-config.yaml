@@ -275,30 +275,27 @@ paths:
           description: "Unauthorized"
   /user/create:
     post:
-      summary: "Create or Update User Address"
+      summary: "Create or Update Address"
       operationId: "createOrUpdateAddress"
+      x-google-backend:
+        address: "https://user-service-jl4ebnk3lq-ez.a.run.app"
+        path_translation: APPEND_PATH_TO_ADDRESS
       consumes:
-        - application/json
-      produces:
         - application/json
       parameters:
         - in: body
           name: userDetails
-          description: "User Details Object"
+          description: "User Details"
+          required: true
           schema:
             $ref: '#/definitions/UserDetails'
       responses:
         200:
-          description: "User address created or updated successfully"
+          description: "Address created or updated"
           schema:
             $ref: '#/definitions/UserDetails'
         401:
           description: "Unauthorized"
-        500:
-          description: "Internal Server Error"
-      x-google-backend:
-        address: "https://user-service-jl4ebnk3lq-ez.a.run.app"  # Replace with the actual URL of your user service
-        path_translation: APPEND_PATH_TO_ADDRESS  
   /user/{userID}:
     get:
       summary: "Get User Details by User ID"
