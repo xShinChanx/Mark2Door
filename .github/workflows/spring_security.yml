@@ -14,7 +14,7 @@ env:
   PORT: 6060
   MAX_INSTANCES: 10  # Set your desired maximum number of instances here
   CPU: 8.0  # Adjusted maximum CPU allocation (in vCPU)
-  MEMORY: 2Gi  # Set maximum memory allocation
+  MEMORY: 32Gi  # Set maximum memory allocation
 
 jobs:
   build:
