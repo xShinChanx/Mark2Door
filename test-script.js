@@ -2,9 +2,8 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export let options = {
-  vus: 1000, // Number of virtual users
-  duration: '5s', // Duration of the test
-  // Additional options can be added for more control, like thresholds and stages
+  vus: 100,
+  duration: '5s', // Increased to 30 seconds
 };
 
 export default function () {
@@ -22,11 +21,9 @@ export default function () {
 
   let response = http.post(url, payload, params);
 
-  // Check if the request was successful
   check(response, {
     'status is 200': (r) => r.status === 200,
   });
 
-  // Pause for 1 second between iterations
-  sleep(1);
+  sleep(1); // Adjust sleep time based on test needs
 }

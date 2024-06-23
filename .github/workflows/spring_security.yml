@@ -13,6 +13,8 @@ env:
   REGION: europe-west4
   PORT: 6060
   MAX_INSTANCES: 10  # Set your desired maximum number of instances here
+  CPU: 2  # Set maximum CPU allocation (in vCPU)
+  MEMORY: 2GiB  # Set maximum memory allocation
 
 jobs:
   build:
@@ -70,4 +72,6 @@ jobs:
             --port ${{ env.PORT }} \
             --region ${{ env.REGION }} \
             --max-instances ${{ env.MAX_INSTANCES }} \
+            --cpu ${{ env.CPU }} \
+            --memory ${{ env.MEMORY }} \
             --allow-unauthenticated || true
