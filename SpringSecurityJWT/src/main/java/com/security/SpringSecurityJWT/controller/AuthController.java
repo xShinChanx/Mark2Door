@@ -65,7 +65,7 @@ public class AuthController {
         template.convertAndSend("user-exchange", "user-routingKey", longId);
         ReqRes response = authService.deleteUserById(id);
 
-        // Convert id to long before sending gfsddd
+        // Convert id to long before sending gfsdddf da
 
 
         if (response.getStatusCode() == 200) {
