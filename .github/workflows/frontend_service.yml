@@ -63,10 +63,12 @@ jobs:
         working-directory: frontEnd
         run: npm start &
 
-      # Run Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      # Install Cypress dependencies
+      - name: Install Cypress dependencies
         working-directory: frontEnd
-        with:
-          spec: cypress/e2e/spec.cy.ts
+        run: npm install cypress
 
+      # Run Cypress tests
+      - name: Run Cypress tests
+        working-directory: frontEnd
+        run: npx cypress run --spec "cypress/e2e/spec.cy.ts"

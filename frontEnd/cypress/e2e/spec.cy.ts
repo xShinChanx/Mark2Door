@@ -7,7 +7,7 @@ describe('My First Test', () => {
     // Should be on a new URL which
     // includes '/commands/actions'
 
-    // Get an input, type into it, yeet yeet yeet fda
+    // Get an input, type into it, yeet yeet yeet fda dsa
   
     cy.get('#email').type('anis@gmail.com')
     cy.get('#password').type('yeet')
