@@ -18,7 +18,6 @@ type ItemType = {
     useEffect(() => {
       const fetchItems = async () => {
         try {
-          const token = Cookies.get("token");
           const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/items'
           //   , {
           //   headers: {

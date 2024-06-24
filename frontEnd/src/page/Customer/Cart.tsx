@@ -12,32 +12,23 @@ const Shop = () => {
     const [items, setItems] = useState<{ id: number, name: string, description: string, count: number }[]>([]);
     
     const userId = Cookies.get("userId");
-    const token = Cookies.get("token");
+    // const token = Cookies.get("token");
     console.log(userId);
 
     useEffect(() => {
         const fetchItems = async () => {
-            try {
-              const token = Cookies.get("token");
-          
-              const response = await axios.get(
-                'https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/getItems',
-                {
-                  params: {
-                    userID: userId,
-                  },
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                }
-              );
-          
-              const data = response.data;
-              setCart(data);
-            } catch (error) {
-              console.error('Error fetching items:', error);
-            }
-          };
+          try {
+            const response = await axios.get(`https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/getItems`, {
+              params: {
+                userID: userId,
+              },
+            });
+            const data = response.data;
+            setCart(data);
+          } catch (error) {
+            console.error(error);
+          }
+        };
     
         fetchItems();
       }, [userId]);
@@ -47,11 +38,11 @@ const Shop = () => {
             try {
                 const itemDetailsPromises = cart.map(itemID =>
                     fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/findItemById?itemID=${itemID}`
-                        , {
-                        headers: {
-                            Authorization: `Bearer ${token}`, // Include the Authorization header
-                        },
-                    }
+                    //     , {
+                    //     headers: {
+                    //         Authorization: `Bearer ${token}`, // Include the Authorization header
+                    //     },
+                    // }
                 )
                         .then(response => response.json())
                 );

@@ -20,11 +20,11 @@ const ListOfShops = () => {
         console.log(token);
 
         const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/shops'
-          , {
-          headers: {
-            Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
-          },
-        }
+        //   , {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`, // Assuming token format is Bearer + token
+        //   },
+        // }
       );
 
         const data = await response.json();

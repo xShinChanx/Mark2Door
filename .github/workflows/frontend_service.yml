@@ -3,7 +3,7 @@ name: FrontEnd - CI CD
 on:
   push:
     paths:
-      - 'discovery-service/**'
+      - 'frontEnd/**'
     branches:
       - main
 
@@ -43,3 +43,29 @@ jobs:
       - name: Deploy to Cloud Run
         id: gohibeesh
         run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{  github.sha }} --platform managed --region ${{env.REGION}} --allow-unauthenticated
+
+  e2e-test:
+    runs-on: ubuntu-22.04
+    needs: deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Start application
+        run: npm start &
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          spec: frontEnd/cypress/e2e/spec.cy.ts

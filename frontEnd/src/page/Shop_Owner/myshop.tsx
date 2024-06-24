@@ -26,7 +26,7 @@ const MyShop: React.FC = () => {
     const fetchShopId = async () => {
 
       try {
-        const response = await fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/shopId/${userId}`, {
+        const response = await fetch(`https://shop-service-jl4ebnk3lq-ez.a.run.app/shop/shopId/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -54,12 +54,12 @@ const MyShop: React.FC = () => {
     const fetchItems = async () => {
       if (shopId !== null) {
         try {
-          const response = await fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/findItemsbyShopId?shopId=${shopId}`
-            , {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          }
+          const response = await fetch(`https://shop-service-jl4ebnk3lq-ez.a.run.app/shop/findItemsbyShopId?shopId=${shopId}`
+          //   , {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`
+          //   }
+          // }
         );
         
           if (response.ok) {

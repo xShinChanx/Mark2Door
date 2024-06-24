@@ -1,7 +1,4 @@
 import '../../css/component/itemComponent.css'
-import axios from "axios";
-import Cookies from 'js-cookie'; // Assuming you're using js-cookie
-
 
 type ItemProps = {
   name: string;
@@ -13,23 +10,17 @@ type ItemProps = {
 const Item = ({ name, description, itemID, userID }: ItemProps) => {
   const addToCart = async () => {
     try {
-      const token = Cookies.get("token");
-  
-      const response = await axios.post(
-        'https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/addItemToCart',
-        {
+      const response = await fetch('https://new-gateway-6jhcj4ol.ew.gateway.dev/cart/addItemToCart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           userID: userID,
           itemID: itemID,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-  
-      if (response.status === 200) {
+        }),
+      });
+      if (response.ok) {
         alert('Item added to cart successfully');
       } else {
         console.error('Failed to add item to cart');

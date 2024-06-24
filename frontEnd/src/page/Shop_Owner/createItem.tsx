@@ -14,7 +14,7 @@ const CreateItemForm = () => {
   const [shopId, setShopId] = useState<number | null>(null); // State to hold the shopId
   const navigate = useNavigate(); // Hook for navigation
 
-  const token = Cookies.get("token");
+  // const token = Cookies.get("token");
 
   useEffect(() => {
     const fetchShopId = async () => {
@@ -22,11 +22,11 @@ const CreateItemForm = () => {
 
       try {
         const response = await fetch(`https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/shopId/${userId}`
-          , {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        //   , {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`
+        //   }
+        // }
       );
       
         if (response.ok) {
@@ -52,14 +52,14 @@ const CreateItemForm = () => {
 
     try {
       const response = await axios.post(
-        "https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/item",
+        "https://shop-service-jl4ebnk3lq-ez.a.run.app/shop/item",
         { name, description, price, shopId }
-        ,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        // ,
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`
+        //   }
+        // }
       );
       console.log(response.data);
       // Redirect to /myshop after successful item creation
