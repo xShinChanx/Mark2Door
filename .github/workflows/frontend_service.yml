@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         id: gohibeesh
-        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{  github.sha }} --platform managed --region ${{env.REGION}} --allow-unauthenticated
+        run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }} --platform managed --region ${{env.REGION}} --allow-unauthenticated --min-instances 1
 
   e2e-test:
     runs-on: ubuntu-22.04
@@ -57,7 +57,7 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build application
         run: npm run build
