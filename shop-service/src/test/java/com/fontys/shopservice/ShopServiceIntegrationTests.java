@@ -1,6 +1,7 @@
 package com.fontys.shopservice;
 
 import com.fontys.shopservice.model.Shop;
+import com.fontys.shopservice.repository.ShopRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -9,10 +10,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,12 +23,12 @@ public class ShopServiceIntegrationTests {
     private MockMvc mockMvc;
 
     @Autowired
-    private TestH2Repository testH2Repository;
+    private ShopRepository shopRepository;
 
     @Test
     public void testCreateAndFindShop() throws Exception {
         // Create a shop using the MockMvc
-        String shopJson = "{ \"name\": \"Lulu\", \"description\": \"Indian Shop\", \"ownerId\": 1 }";
+        String shopJson = "{ \"name\": \"Lulu\", \"description\": \"Indian Shop\", \"ownerId\": 99 }";
 
         mockMvc.perform(post("/shop/createShop")
                         .contentType("application/json")
@@ -38,18 +37,26 @@ public class ShopServiceIntegrationTests {
                 .andExpect(content().string("Shop created successfully"));
 
         // Verify the shop was created using the TestH2Repository
-        Optional<Shop> shopOptional = testH2Repository.findByOwnerId(1L);
+        Optional<Shop> shopOptional = shopRepository.findByOwnerId(99L);
         assertTrue(shopOptional.isPresent());
         Shop shop = shopOptional.get();
         assertEquals("Lulu", shop.getName());
         assertEquals("Indian Shop", shop.getDescription());
-        assertEquals(Long.valueOf(1), shop.getOwnerId());
+        assertEquals(Long.valueOf(99), shop.getOwnerId());
     }
 
     @Test
-    public void testHelloEndpoint() throws Exception {
-        mockMvc.perform(get("/shop/hello"))
+    public void testDeleteShop() throws Exception {
+        // Assume the shop is already created from the previous test or setup method
+        Long ownerId = 99L;
+
+        // Delete the shop using the MockMvc
+        mockMvc.perform(delete("/shop/delete/{ownerId}", ownerId))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello, World!"));
+                .andExpect(content().string("Shop deleted successfully"));
+
+        // Verify the shop was deleted using the TestH2Repository
+        Optional<Shop> shopOptional = shopRepository.findByOwnerId(ownerId);
+        assertFalse(shopOptional.isPresent());
     }
 }
