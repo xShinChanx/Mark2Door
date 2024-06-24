@@ -43,7 +43,7 @@ public class ShopServiceImp implements ShopService {
             shopRepository.delete(shop.get());
             return "Shop deleted successfully";
         } else {
-            return "Shop can't be found for owner ID: " + ownerId;
+            return "Shop not found for owner ID: " + ownerId;
         }
     }
 
