@@ -27,7 +27,6 @@ public class ShopServiceIntegrationTests {
 
     @Test
     public void testCreateAndFindShop() throws Exception {
-        // Create a shop using the MockMvc
         String shopJson = "{ \"name\": \"Lulu\", \"description\": \"Indian Shop\", \"ownerId\": 99 }";
 
         mockMvc.perform(post("/shop/createShop")
@@ -36,7 +35,6 @@ public class ShopServiceIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Shop created successfully"));
 
-        // Verify the shop was created using the TestH2Repository
         Optional<Shop> shopOptional = shopRepository.findByOwnerId(99L);
         assertTrue(shopOptional.isPresent());
         Shop shop = shopOptional.get();
@@ -47,15 +45,12 @@ public class ShopServiceIntegrationTests {
 
     @Test
     public void testDeleteShop() throws Exception {
-        // Assume the shop is already created from the previous test or setup method
         Long ownerId = 99L;
 
-        // Delete the shop using the MockMvc
         mockMvc.perform(delete("/shop/delete/{ownerId}", ownerId))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Shop deleted successfully"));
 
-        // Verify the shop was deleted using the TestH2Repository
         Optional<Shop> shopOptional = shopRepository.findByOwnerId(ownerId);
         assertFalse(shopOptional.isPresent());
     }
