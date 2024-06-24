@@ -45,26 +45,26 @@ jobs:
         run: gcloud run deploy ${{env.SERVICE}} --image gcr.io/market2door-426707/${{ env.SERVICE }}:${{ github.sha }} --platform managed --region ${{env.REGION}} --allow-unauthenticated --min-instances 1
 
   e2e-test:
-  runs-on: ubuntu-22.04
-  needs: deploy
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    runs-on: ubuntu-22.04
+    needs: deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    # Install npm dependencies and build the project
-    - name: Install and build frontend
-      working-directory: frontEnd
-      run: |
-        npm install
-        npm run build
+      # Install npm dependencies and build the project
+      - name: Install and build frontend
+        working-directory: frontEnd
+        run: |
+          npm install
+          npm run build
 
-    # Start the frontend application
-    - name: Start frontend
-      working-directory: frontEnd
-      run: npm start &
+      # Start the frontend application
+      - name: Start frontend
+        working-directory: frontEnd
+        run: npm start &
 
-    # Run Cypress tests
-    - name: Cypress run
-      uses: cypress-io/github-action@v6
-      with:
-        spec: frontEnd/cypress/e2e/spec.cy.ts
+      # Run Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          spec: frontEnd/cypress/e2e/spec.cy.ts
