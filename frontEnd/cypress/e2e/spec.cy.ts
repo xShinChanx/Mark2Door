@@ -7,7 +7,8 @@ describe('My First Test', () => {
     // Should be on a new URL which
     // includes '/commands/actions'
 
-    // Get an input, type into it
+    // Get an input, type into it, yeet
+  
     cy.get('#email').type('anis@gmail.com')
     cy.get('#password').type('yeet')
     cy.get('#ButtonLogin').click();
