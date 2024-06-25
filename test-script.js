@@ -1,4 +1,4 @@
-import http from 'k6/http';
+import http from 'k6/http'; 
 import { check, sleep } from 'k6';
 
 export let options = {
@@ -27,7 +27,6 @@ export default function () {
   });
 
   // Calculate the appropriate sleep time to achieve 100 req/sec
-  // Since k6 executes iterations as quickly as possible, sleep is used to control the rate
   const desiredRps = 100; // Desired requests per second
   const sleepTime = 1 / desiredRps - response.timings.duration / 1000;
   
