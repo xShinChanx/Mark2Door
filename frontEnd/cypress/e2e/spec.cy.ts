@@ -4,14 +4,10 @@ describe('End2End Test - SignIn', () => {
 
     cy.contains('Login').click()
 
-    // Should be on a new URL which
-    // includes '/commands/actions'
-  
     cy.get('#email').type('anis@gmail.com')
     cy.get('#password').type('yeet')
     cy.get('#ButtonLogin').click();
 
-    //  Verify that the value has been updated yes1
     cy.url().should('include', '/homepageCustomer')
   })
 })

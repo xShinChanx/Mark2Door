@@ -16,22 +16,22 @@ const CreateShopForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const ownerId = Cookies.get("userId");
-    // const token = Cookies.get("token");
+    const token = Cookies.get("token");
 
     try {
       const response = await axios.post(
-        "https://shop-service-jl4ebnk3lq-ez.a.run.app/shop/createShop",
+        "https://new-gateway-6jhcj4ol.ew.gateway.dev/shop/createShop",
         { 
           name, 
           description, 
           ownerId 
         }
-        // ,
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`
-        //   }
-        // }
+        ,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       );
       console.log(response.data);
       navigate('/homepageShopOwner'); // Redirect to /homepageShopOwner

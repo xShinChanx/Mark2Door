@@ -3,7 +3,7 @@ name: FrontEnd - CI CD
 on:
   push:
     paths:
-      - 'frontEnd/**'
+      - 'discovery-service/**'
     branches:
       - main
 
