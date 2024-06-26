@@ -4,6 +4,7 @@ import com.fontys.shopservice.model.Shop;
 
 import java.util.List;
 import java.util.Optional;
+//yeeet
 
 public interface ShopService {
     String saveShopData(Shop shop);
