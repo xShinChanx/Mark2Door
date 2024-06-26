@@ -24,6 +24,8 @@ public class SecurityConfig {
     @Autowired
     private OurUserDetailsService ourUserDetailsService;
 
+    //yeet
+
     @Autowired
     private JWTAuthFilter jwtAuthFilter;
 
