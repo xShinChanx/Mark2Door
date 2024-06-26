@@ -19,8 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ShopServiceIntegrationTests {
 
-    @Autowired
-    private MockMvc mockMvc;
+    //@Autowired
+    //private MockMvc mockMvc;
 
     @Autowired
     private ShopRepository shopRepository;
