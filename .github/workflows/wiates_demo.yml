@@ -7,7 +7,7 @@ env:
   PROJECT_ID: market2door-426707
   SERVICE: wiates-demo
   REGION: europe-west4
-  PORT: 3000      
+  PORT: 4000      
             
 jobs:
   deploy:

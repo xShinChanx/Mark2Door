@@ -20,7 +20,7 @@ RUN npm run build
 RUN npm install -g serve
 
 # Set the command to start the server
-CMD ["serve", "-s", "build", "-l", "3000"]
+CMD ["serve", "-s", "build", "-l", "4000"]
 
 # Expose port 3000 to the outside world
-EXPOSE 3000
+EXPOSE 4000
