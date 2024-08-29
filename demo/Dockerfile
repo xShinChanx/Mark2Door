@@ -19,8 +19,8 @@ RUN npm run build
 # Install a simple web server to serve the React app
 RUN npm install -g serve
 
-# Set the command to start the server
-CMD ["serve", "-s", "build", "-l", "4000"]
+# Set the command to start the server on port 8080
+CMD ["serve", "-s", "build", "-l", "8080"]
 
-# Expose port 3000 to the outside world
-EXPOSE 4000
+# Expose port 8080 to the outside world
+EXPOSE 8080
