@@ -1,0 +1,609 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+body {
+    overflow-x: hidden;
+}
+
+.black-box {
+    position: absolute;  /* Change from fixed to absolute */
+    top: 10px;           /* Position from the top, adjust as needed */
+    left: 50%;           /* Position from the left */
+    transform: translateX(-50%); /* Center horizontally using transform */
+    /* All other properties remain unchanged */
+    background-color: black;  /* Black background */
+    color: white;             /* White text */
+    padding: 20px;            /* Space inside the box */
+    border-radius: 15px;      /* Curved edges */
+    width: 90%;               /* Adjust the width to your preference */
+    text-align: center;       /* Center-align text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional: shadow effect */
+    margin-bottom: 80px;  /* footer height plus 10px */
+}
+
+.menubar {
+    justify-content: end;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    margin-top: 70px;
+    margin-left: -8px;
+    margin-right: 160px;
+    align-items: center;
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding-top: 18px;
+    padding-bottom: 12px;
+    margin-right: 20px;
+}
+
+a:hover {
+    color: #35b5b6;
+}
+
+a {
+    padding: 11px;
+    padding-top: 17px;
+    padding-left: 29px;
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    color: #808080;
+    text-decoration: none;
+}
+
+.logo {
+    position: absolute;
+    justify-content: start;
+    left: 10%;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    width: 150px;
+    height: 34px;
+    text-align: center;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    line-height: 33px;
+}
+
+.parent-container {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: center; /* Center vertically within the container */
+    align-items: center;     /* Center horizontally within the container */
+    height: 272vh;            /* Adjust height as needed */
+}
+
+.text-container {
+    position: relative;  /* Makes this element the reference point for absolutely positioned children */
+    display: flex;
+    justify-content: center; /* Center items horizontally within container */
+    align-items: center;     /* Center items vertically within container */
+    flex-direction: column;  /* Arrange items in a column */
+    gap: 10px;               /* Adjust the value to control space between items */
+    height: 200px;           /* Adjust as needed */
+    width: 60%;              /* Adjust as needed */
+}
+
+.text-container > * + * {
+    margin-top: -27px; /* Adjusts space between items */
+}
+
+.text-content {
+    font-style: italic; /* Apply italic style */
+    font-size: 30px;
+    color: #333; /* Default text color */
+}
+
+.highlight {
+    color: #35b5b6; /* Change this to your desired color */
+}
+
+.underlineImage {
+    position: absolute; /* Absolute positioning to allow free movement */
+    top: 147px;          /* Adjust this value to move the image vertically */
+    left: 693px;          /* Adjust this value to move the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 18%;         /* Adjust width as needed */
+    background-size: cover;
+    z-index: 1;        /* Ensure the image is above other content */
+}
+
+.sub-text-container {
+    display: flex;
+    justify-content: center; /* Center items horizontally within container */
+    align-items: center;     /* Center items vertically within container */
+    flex-direction: column;  /* Arrange items in a column */
+    gap: 14px;               /* Adjust the value to control space between items */
+    height: 0px;           /* Adjust as needed */
+    width: 60%;              /* Adjust as needed */
+    background-color: #ffffff; /* Optional: background color */
+    margin-top: 20px;         /* Increase this value to move the container down */
+}
+
+.sub-text-container > * + * {
+    margin-top: -27px; /* Adjusts space between items */
+}
+
+.sub-text-container {
+    font-size: 15px;
+    color: #333; /* Default text color */
+}
+
+.button-container {
+    display: flex;          /* To align buttons side by side */
+    gap: 10px;              /* Add some space between buttons */
+    justify-content: center;/* Center the buttons horizontally */
+    margin-top: 60px;       /* Add some space above the buttons */
+}
+
+.btn {
+    padding: 7px 20px;     /* Padding inside the button */
+    border: none;           /* No border */
+    cursor: pointer;        /* Pointer cursor on hover */
+    font-size: 16px;        /* Font size */
+    border-radius: 8px;     /* Rounded corners */
+    border: 1px solid;          /* Set a default border width and style */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.btn-primary {
+    background-color: #35b5b6; /* Secondary button color */
+    color: white;
+    border-color: #35b5b6;     /* Secondary button border color */
+}
+
+.btn-secondary {
+    background-color: #ffffff; /* Primary button color */
+    color: #35b5b6;
+    border-color: #35b5b6;  
+}
+
+.sub-heading-text-container {
+    display: flex;
+    justify-content: center;  /* Center items horizontally within container */
+    align-items: center;      /* Center items vertically within container */
+    flex-direction: column;   /* Arrange items in a column */
+    gap: 20px;                /* Adjust the value to control space between items */
+    height: auto;             /* Allow container to adapt to content height */
+    width: 60%;               /* Adjust as needed */
+    padding-top: 50px;        /* Push the container down from the top */
+}
+
+.sub-heading-content {
+    font-size: 35px;
+    font-weight: bolder;
+    color: #333; /* Default text color */
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: row;      /* Stacks children horizontally (side by side) */
+    justify-content: center;  /* Center horizontally within the inner container */
+    align-items: center;      /* Center vertically within the inner container */
+    width: 100%;              /* Takes full width of parent container */
+    background-color: #e0e0e0; /* Optional: different background color for distinction */
+    padding: 10px;            /* Optional: space inside the inner container */
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 230px;
+    background: linear-gradient(to bottom, #ebf8f8 80%, #ffffff 100%);
+    border-radius: 30px; /* Increase the value to make the edges more curved */    
+    margin: 10px;
+    text-align: center;
+    color: #35b5b6;
+    line-height: 1.5;
+    padding: 10px;
+}
+
+.first-line {
+    font-size: 50px;  /* Larger font size for the first line */
+    font-weight: 1000; /* Increased thickness for more emphasis */
+    color: #35b5b6;   /* Text color */
+}
+
+.second-line {
+    font-size: 15px; /* Smaller font size for the second line */
+    font-weight: normal; /* Normal weight for less emphasis */
+    color: #000000; /* Different color for the second line */
+}
+
+/* Specific styles for the second and third boxes */
+.box:nth-child(2) {
+    width: 251px;
+    background: linear-gradient(to bottom, #ebf8f8 80%, #ffffff 100%);
+}
+
+.box:nth-child(3) {
+    width: 260px;
+    background: linear-gradient(to bottom, #ebf8f8 80%, #ffffff 100%);
+}
+
+.second-sub-heading-text-container {
+    display: flex;
+    justify-content: center;  /* Center items horizontally within container */
+    align-items: center;      /* Center items vertically within container */
+    flex-direction: column;   /* Arrange items in a column */
+    gap: 5px;                /* Adjust the value to control space between items */
+    height: auto;             /* Allow container to adapt to content height */
+    width: 60%;               /* Adjust as needed */
+    background-color: #ffffff; /* Optional: background color */
+    padding-top: 50px;        /* Push the container down from the top */
+}
+
+.second-sub-heading-content {
+    font-size: 35px;
+    font-weight: bolder;
+    color: #333;
+    margin: 0; /* Removes default margins */
+    line-height: 1.4; /* Optional: fine-tune the line spacing */
+}
+
+.blue-second-sub-heading-content {
+    font-size: 35px;
+    font-weight: bolder;
+    color: #35b5b6;
+    margin: 0; /* Removes default margins */
+    line-height: 1.4; /* Optional: fine-tune the line spacing */
+    z-index: 3;
+}   
+
+.secondary-container {
+    display: flex;
+    flex-direction: row;      /* Stacks children horizontally (side by side) */
+    justify-content: center;  /* Center horizontally within the secondary container */
+    align-items: center;      /* Center vertically within the secondary container */
+    width: 100%;              /* Takes full width of parent container */
+    background-color: #ffffff; /* Optional: different background color for distinction */
+    padding: 10px;            /* Optional: space inside the secondary container */
+    margin-top: 20px;         /* Space between the primary and secondary containers */
+}
+
+.secondary-box {
+    display: flex;               /* Use flexbox to align text */
+    flex-direction: column;      /* Stack text lines vertically */
+    justify-content: center;     /* Center text vertically */
+    align-items: center;         /* Center text horizontally */
+    width: 350px;                /* Adjust width as needed */
+    height: auto;                /* Adjust height as needed for dynamic content */
+    background: #ffffff;       /* Gradient from darker to light */
+    border-radius: 15px;         /* Rounded edges */
+    margin: 10px;                /* Space between boxes */
+    text-align: center;          /* Ensure text is centered */
+    color: #333;                 /* Text color for contrast */
+    font-family: Arial, sans-serif; /* Font family */
+    font-size: 15px;             /* Font size for readability */
+    font-weight: 400;            /* Font weight */
+    line-height: 1.6;            /* Line height for spacing between lines */
+    padding: 20px;               /* Padding inside the box for text */
+    box-sizing: border-box;      /* Ensures padding does not affect width */
+    overflow-y: auto;            /* Adds a scrollbar if the content overflows */
+}
+
+.secondary-box p {
+    margin: 10px 0;              /* Margin between paragraphs */
+    text-align: justify;         /* Justify the text inside the paragraphs */
+}
+
+.talkingImage {
+    position: absolute; /* Absolute positioning to allow free movement */
+    top: 1030px;          /* Adjust this value to move the image vertically */
+    left: 1150px;          /* Adjust this value to move the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 25%;         /* Adjust width as needed */
+    background-size: cover;
+    z-index: 1;        /* Ensure the image is above other content */
+}
+
+.second-highlight {
+    font-weight: 600;            /* Slightly bolder text for emphasis */
+}
+
+.third-sub-heading-text-container {
+    display: flex;
+    justify-content: center;  /* Center items horizontally within container */
+    align-items: center;      /* Center items vertically within container */
+    flex-direction: column;   /* Arrange items in a column */
+    gap: 5px;                /* Adjust the value to control space between items */
+    height: auto;             /* Allow container to adapt to content height */
+    width: 60%;               /* Adjust as needed */
+    padding-top: 75px;        /* Push the container down from the top */
+}
+
+.third-sub-heading-content {
+    font-size: 35px;
+    font-weight: bolder;
+    color: #333;
+    margin: 0; /* Removes default margins */
+    line-height: 1.4; /* Optional: fine-tune the line spacing */
+}
+
+/* Main container for horizontal alignment */
+.main-container {
+    display: flex;               /* Use flexbox for horizontal layout */
+    align-items: center;         /* Align items vertically centered */
+    gap: 0;                      /* Remove gap to ensure the dotted line touches the boxes */
+    padding: 100px 20px 20px;    /* Increase top padding to move the content down */
+}
+
+/* Container for individual box */
+.overlapping-container {
+    position: relative;          /* Make this container relative to position the number absolutely */
+    display: flex;               /* Flexbox to align number and box */
+    flex-direction: column;      /* Stack number above box */
+    align-items: center;         /* Center items horizontally */
+    margin-top: 0;               /* Remove top margin, if added previously */
+}
+
+/* Style for the number */
+.overlapping-number {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #35b5b6;
+    position: absolute;          /* Position the number absolutely relative to the container */
+    top: -60px;                  /* Move the number up; adjust as needed */
+    z-index: 0;                  /* Ensure the number is behind the box */
+    white-space: nowrap;
+}
+
+/* Style for the box */
+.overlapping-box {
+    position: relative;          /* Ensure the box is positioned relative */
+    display: flex;               /* Flexbox to align text */
+    flex-direction: column;      /* Stack text lines vertically */
+    justify-content: center;     /* Center text vertically */
+    align-items: center;         /* Center text horizontally */
+    width: 200px;                /* Adjust width as needed */
+    height: 217px;               /* Adjust height as needed */
+    background: #ebf8f8;         /* Background color */
+    border-radius: 15px;         /* Rounded edges */
+    padding: 30px;               /* Padding inside the box */
+    text-align: center;          /* Center text horizontally inside the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for better visibility */
+    z-index: 1;                  /* Ensure the box is in front of the number */
+}
+
+/* Style for the dotted line */
+.dotted-line {
+    width: 200px;                /* Width of the dotted line, adjust as needed */
+    flex: 1;                     /* Allow the dotted line to grow and fill available space */
+    height: 2px;                 /* Height of the dotted line */
+    border-top: 2px dotted #000000; /* Dotted line style and color */
+    align-self: center;          /* Center the dotted line vertically */
+    margin: 0;                   /* Remove any margins */
+}
+
+/* Text styles within the box */
+.overlapping-box p {
+    margin: 0;
+    color: #000000;              /* Text color for contrast */
+    font-size: 15px;             /* Font size */
+    line-height: 1.5;            /* Line height for spacing between lines */
+}
+
+.overlapping-box p:first-of-type {
+    margin-bottom: 20px;
+    font-weight: 500;            /* Font weight for emphasis */
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.overlapping-box .justify {
+    text-align: justify;         /* Justify text */
+    width: 100%;                 /* Ensure the paragraph spans the full width of the box */
+    text-justify: inter-word;    /* Adjust justification to add space between words */
+    margin-bottom: 0;            /* Remove bottom margin if not needed */
+}
+
+.number-02 {
+    color: #f6a915; /* Replace with your desired color */
+}
+
+.fourth-sub-heading-text-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    height: auto;
+    width: 60%;
+    padding-top: 75px;
+}
+  
+.fourth-sub-heading-content {
+    font-size: 35px;
+    font-weight: bolder;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+    margin-bottom: 40px; /* Increase the space below the paragraph */
+}
+  
+.shapes-wrapper {
+    display: flex;
+    justify-content: center; /* Center the shape containers horizontally */
+    gap: 175px; /* Space between the shape containers */
+}
+  
+.shape-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between curved shape and circle */
+}
+  
+.curved-shape {
+    width: 300px;
+    height: 217px;
+    background: #ebf8f8;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+  
+.curved-shape p {
+    position: absolute;
+    top: 27%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    color: black;
+    margin: 0;
+    font-size: 14px;
+    width: 190px;
+    text-align: left;
+    white-space: pre-wrap;
+}
+  
+.curved-shape p.bottom-text-curved {
+    top: 75%;
+    color: grey;
+}
+  
+.circle {
+    width: 140px;
+    height: 140px;
+    top: -50%;
+    left: 48%;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 2;
+}
+  
+.top-text-circle {
+    position: absolute;
+    top: -49%;
+    left: 35%;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #35b5b6;
+}
+  
+.bottom-text-circle {
+    position: absolute;
+    top: 60%;
+    left: 45%;
+    font-size: 14px;
+    font-weight: normal;
+    color: grey;
+}
+  
+.yellowBreakBox {
+    position: absolute;
+    top: 30px;
+    left: 275px;
+    transform: translateX(-50%);
+    width: 7%;
+    background-size: cover;
+    z-index: -1;
+}
+  
+.redSoundBox {
+    position: absolute;
+    top: 97px;
+    left: 825px;
+    transform: translateX(-50%);
+    width: 7%;
+    background-size: cover;
+    z-index: -1;
+}
+
+.yellowBoxImage {
+    position: absolute; /* Absolute positioning to allow free movement */
+    top: 20px;          /* Adjust this value to move the image vertically */
+    left: 348px;          /* Adjust this value to move the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 9%;         /* Adjust width as needed */
+    background-size: cover;
+    z-index: -1;        /* Ensure the image is above other content */
+}
+
+
+.flying_manImage {
+    position: absolute; /* Absolute positioning to allow free movement */
+    top: 115px;          /* Adjust this value to move the image vertically */
+    left: 897px;          /* Adjust this value to move the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 25%;         /* Adjust width as needed */
+    background-size: cover;
+    z-index: -1;        /* Ensure the image is above other content */
+}
+
+.redboxImage {
+    position: absolute; /* Absolute positioning to allow free movement */
+    top: 225px;          /* Adjust this value to move the image vertically */
+    left: 290px;          /* Adjust this value to move the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 6.5%;         /* Adjust width as needed */
+    background-size: cover;
+    z-index: -1;        /* Ensure the image is above other content */
+}
+
+.blueShade {
+    position: absolute; /* Absolute positioning to allow free movement */
+    top: -100px;          /* Adjust this value to move the image vertically */
+    left: 115px;          /* Adjust this value to move the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 80%;         /* Adjust width as needed */
+    background-size: cover;
+    z-index: -1;        /* Ensure the image is above other content */
+}
+
+.yellowShade {
+    position: absolute; /* Absolute positioning to allow free movement */
+    top: -120px;          /* Adjust this value to move the image vertically */
+    left: 120px;          /* Adjust this value to move the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 100%;         /* Adjust width as needed */
+    background-size: cover;
+    z-index: -1;        /* Ensure the image is above other content */
+}
+
+.footer-container {
+    background-color: #000; /* Black background */
+    color: #fff;            /* White text color */
+    padding: 20px 0;       /* Vertical padding */
+    width: 100%;            /* Full width of the viewport */
+    position: relative;     /* Position relative to parent elements */
+    bottom: 0;              /* Stick to the bottom if necessary */
+    padding: 20px; /* Increase as needed */
+    height: auto; /* Allows height to adjust based on content */
+    min-height: 100px; /* Ensure minimum height */
+}
+
+.top-container {
+    max-width: 1200px;      /* Maximum width of the container */
+    margin: 0 auto;         /* Center the container horizontally */
+    padding: 0 20px;        /* Horizontal padding */
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+
+.top-container-text{
+    
+}
